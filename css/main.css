@@ -957,7 +957,8 @@ pre .javascript .function {
   bottom: 19px;
 }
 .header {
-  background: #fff;
+  /*background: #fff;*/
+  background: url(http://theme-next.iissnan.com/assets/img/banner-2.jpg) center;
 }
 .header-inner {
   position: relative;
