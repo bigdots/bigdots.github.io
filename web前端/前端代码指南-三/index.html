@@ -1,0 +1,782 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端代码指南" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="前端代码指南(一)前端代码指南(二)前端代码指南(三) 注： 下面ES6的语法 性能性能中最重要的是可读性、正确性和可表达性，JavaScript基本上永远不会成为你的性能瓶颈。我们可以通过图像压缩、网络存取和减少回流等来优化性能。如果你看过整篇篇文章后只能记住一条，请记住这条。 1234567891011121314151617// 糟糕的 (albeit way faster)const ar">
+<meta name="keywords" content="前端代码指南">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端代码指南(三) —— javascript">
+<meta property="og:url" content="http://godgoods.com/web前端/前端代码指南-三/index.html">
+<meta property="og:site_name" content="godgoods">
+<meta property="og:description" content="前端代码指南(一)前端代码指南(二)前端代码指南(三) 注： 下面ES6的语法 性能性能中最重要的是可读性、正确性和可表达性，JavaScript基本上永远不会成为你的性能瓶颈。我们可以通过图像压缩、网络存取和减少回流等来优化性能。如果你看过整篇篇文章后只能记住一条，请记住这条。 1234567891011121314151617// 糟糕的 (albeit way faster)const ar">
+<meta property="og:updated_time" content="2017-05-12T06:23:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端代码指南(三) —— javascript">
+<meta name="twitter:description" content="前端代码指南(一)前端代码指南(二)前端代码指南(三) 注： 下面ES6的语法 性能性能中最重要的是可读性、正确性和可表达性，JavaScript基本上永远不会成为你的性能瓶颈。我们可以通过图像压缩、网络存取和减少回流等来优化性能。如果你看过整篇篇文章后只能记住一条，请记住这条。 1234567891011121314151617// 糟糕的 (albeit way faster)const ar">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://godgoods.com/web前端/前端代码指南-三/"/>
+
+
+
+
+
+  <title>前端代码指南(三) —— javascript | godgoods</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-98870712-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?752f52fcdbfe15210fb443ca7e68f7fb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">godgoods</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Sean's 个人站</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://godgoods.com/web前端/前端代码指南-三/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="godgoods">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">前端代码指南(三) —— javascript</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-09-09T11:05:00+08:00">
+                2016-09-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                    <span itemprop="name">web前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="/2015/12/24/前端代码指南-一/">前端代码指南(一)</a><br><a href="/2015/12/25/前端代码指南-二/">前端代码指南(二)</a><br><a href="/2015/12/25/前端代码指南-三/">前端代码指南(三)</a></p>
+<p><b style="color:#d44950">注：</b> 下面ES6的语法</p>
+<h3 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h3><p>性能中最重要的是可读性、正确性和可表达性，JavaScript基本上永远不会成为你的性能瓶颈。我们可以通过图像压缩、网络存取和减少回流等来优化性能。如果你看过整篇篇文章后只能记住一条，请记住这条。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// 糟糕的 (albeit way faster)</div><div class="line">const arr = [1, 2, 3, 4];</div><div class="line">const len = arr.length;</div><div class="line">var i = -1;</div><div class="line">var result = [];</div><div class="line">while (++i &lt; len) &#123;</div><div class="line">  var n = arr[i];</div><div class="line">  if (n % 2 &gt; 0) continue;</div><div class="line">  result.push(n * n);</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const arr = [1, 2, 3, 4];</div><div class="line">const isEven = n =&gt; n % 2 == 0;</div><div class="line">const square = n =&gt; n * n;</div><div class="line"></div><div class="line">const result = arr.filter(isEven).map(square);</div></pre></td></tr></table></figure>
+<h3 id="无领域"><a href="#无领域" class="headerlink" title="无领域"></a>无领域</h3><p>尽量保持你函数的纯净。理想地，应该创建无副作用的、不使用外部数据的并返回新对象(而不是改变现有的)的函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const merge = (target, ...sources) =&gt; Object.assign(target, ...sources);</div><div class="line">merge(&#123; foo: &quot;foo&quot; &#125;, &#123; bar: &quot;bar&quot; &#125;); // =&gt; &#123; foo: &quot;foo&quot;, bar: &quot;bar&quot; &#125;</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const merge = (...sources) =&gt; Object.assign(&#123;&#125;, ...sources);</div><div class="line">merge(&#123; foo: &quot;foo&quot; &#125;, &#123; bar: &quot;bar&quot; &#125;); // =&gt; &#123; foo: &quot;foo&quot;, bar: &quot;bar&quot; &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="原生"><a href="#原生" class="headerlink" title="原生"></a>原生</h3><p>尽可能依赖原生的方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const toArray = obj =&gt; [].slice.call(obj);</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const toArray = (() =&gt;</div><div class="line">  Array.from ? Array.from : obj =&gt; [].slice.call(obj)</div><div class="line">)();</div></pre></td></tr></table></figure></p>
+<h3 id="强制"><a href="#强制" class="headerlink" title="强制"></a>强制</h3><p>不要在不必要的时候使用隐形强制<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">if (x === undefined || x === null) &#123; ... &#125;</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">if (x == undefined) &#123; ... &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h3><p>不要使用循环,因为他们强迫你使用可变的对象。可以依赖<code>array.prototype</code>方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const sum = arr =&gt; &#123;</div><div class="line">  var sum = 0;</div><div class="line">  var i = -1;</div><div class="line">  for (;arr[++i];) &#123;</div><div class="line">    sum += arr[i];</div><div class="line">  &#125;</div><div class="line">  return sum;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">sum([1, 2, 3]); // =&gt; 6</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const sum = arr =&gt;</div><div class="line">  arr.reduce((x, y) =&gt; x + y);</div><div class="line"></div><div class="line">sum([1, 2, 3]); // =&gt; 6</div></pre></td></tr></table></figure></p>
+<p>如果你不能避免使用循环,或者使用<code>array.prototype</code>方法对你来说是一种受虐的行为,可以使用递归<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const createDivs = howMany =&gt; &#123;</div><div class="line">  while (howMany--) &#123;</div><div class="line">    document.body.insertAdjacentHTML(&quot;beforeend&quot;, &quot;&lt;div&gt;&lt;/div&gt;&quot;);</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line">createDivs(5);</div><div class="line"></div><div class="line">// 糟糕的</div><div class="line">const createDivs = howMany =&gt;</div><div class="line">  [...Array(howMany)].forEach(() =&gt;</div><div class="line">    document.body.insertAdjacentHTML(&quot;beforeend&quot;, &quot;&lt;div&gt;&lt;/div&gt;&quot;)</div><div class="line">  );</div><div class="line">createDivs(5);</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const createDivs = howMany =&gt; &#123;</div><div class="line">  if (!howMany) return;</div><div class="line">  document.body.insertAdjacentHTML(&quot;beforeend&quot;, &quot;&lt;div&gt;&lt;/div&gt;&quot;);</div><div class="line">  return createDivs(howMany - 1);</div><div class="line">&#125;;</div><div class="line">createDivs(5);</div></pre></td></tr></table></figure></p>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>忘记<code>arguments</code>对象。使用其余的参数才是更好的选择,这是因为：</p>
+<ol>
+<li>其余的参数是被命名的,所以你可以给这个函数的参数一个更好的注意</li>
+<li>其余的参数是一个真正的数组,这使得它更容易使用。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const sortNumbers = () =&gt;</div><div class="line">  Array.prototype.slice.call(arguments).sort();</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const sortNumbers = (...numbers) =&gt; numbers.sort();</div></pre></td></tr></table></figure>
+<h3 id="Apply"><a href="#Apply" class="headerlink" title="Apply"></a>Apply</h3><p>忘记Apply()函数，使用扩展来代替<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">const greet = (first, last) =&gt; `Hi $&#123;first&#125; $&#123;last&#125;`;</div><div class="line">const person = [&quot;John&quot;, &quot;Doe&quot;];</div><div class="line"></div><div class="line">// 糟糕的</div><div class="line">greet.apply(null, person);</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">greet(...person);</div></pre></td></tr></table></figure></p>
+<h3 id="绑定"><a href="#绑定" class="headerlink" title="绑定"></a>绑定</h3><p>忘记bind()函数，这里有个更惯用的方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">[&quot;foo&quot;, &quot;bar&quot;].forEach(func.bind(this));</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">[&quot;foo&quot;, &quot;bar&quot;].forEach(func, this);</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const person = &#123;</div><div class="line">  first: &quot;John&quot;,</div><div class="line">  last: &quot;Doe&quot;,</div><div class="line">  greet() &#123;</div><div class="line">    const full = function() &#123;</div><div class="line">      return `$&#123;this.first&#125; $&#123;this.last&#125;`;</div><div class="line">    &#125;.bind(this);</div><div class="line">    return `Hello $&#123;full()&#125;`;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const person = &#123;</div><div class="line">  first: &quot;John&quot;,</div><div class="line">  last: &quot;Doe&quot;,</div><div class="line">  greet() &#123;</div><div class="line">    const full = () =&gt; `$&#123;this.first&#125; $&#123;this.last&#125;`;</div><div class="line">    return `Hello $&#123;full()&#125;`;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="高层级的函数"><a href="#高层级的函数" class="headerlink" title="高层级的函数"></a>高层级的函数</h3><p>在不必需的时候避免使用嵌套函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">[1, 2, 3].map(num =&gt; String(num));</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">[1, 2, 3].map(String);</div></pre></td></tr></table></figure></p>
+<h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p>避免函数的多层次调用，合理使用结构来解决问题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">const plus1 = a =&gt; a + 1;</div><div class="line">const mult2 = a =&gt; a * 2;</div><div class="line"></div><div class="line">// 糟糕的</div><div class="line">mult2(plus1(5)); // =&gt; 12</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const pipeline = (...funcs) =&gt; val =&gt; funcs.reduce((a, b) =&gt; b(a), val);</div><div class="line">const addThenMult = pipeline(plus1, mult2);</div><div class="line">addThenMult(5); // =&gt; 12</div></pre></td></tr></table></figure></p>
+<h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><p>缓存功能测试、大数据结构和任何昂贵的操作。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const contains = (arr, value) =&gt;</div><div class="line">  Array.prototype.includes</div><div class="line">    ? arr.includes(value)</div><div class="line">    : arr.some(el =&gt; el === value);</div><div class="line">contains([&quot;foo&quot;, &quot;bar&quot;], &quot;baz&quot;); // =&gt; false</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const contains = (() =&gt;</div><div class="line">  Array.prototype.includes</div><div class="line">    ? (arr, value) =&gt; arr.includes(value)</div><div class="line">    : (arr, value) =&gt; arr.some(el =&gt; el === value)</div><div class="line">)();</div><div class="line">contains([&quot;foo&quot;, &quot;bar&quot;], &quot;baz&quot;); // =&gt; false</div></pre></td></tr></table></figure></p>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p><code>const</code>优于 <code>let</code>优于 <code>var</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">var me = new Map();</div><div class="line">me.set(&quot;name&quot;, &quot;Ben&quot;).set(&quot;country&quot;, &quot;Belgium&quot;);</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const me = new Map();</div><div class="line">me.set(&quot;name&quot;, &quot;Ben&quot;).set(&quot;country&quot;, &quot;Belgium&quot;);</div></pre></td></tr></table></figure></p>
+<h3 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h3><p><code>if+return语句</code>  优于 <code>if...else if...else</code> 和<code>switch</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">var grade;</div><div class="line">if (result &lt; 50)</div><div class="line">  grade = &quot;糟糕的&quot;;</div><div class="line">else if (result &lt; 90)</div><div class="line">  grade = &quot;推荐的&quot;;</div><div class="line">else</div><div class="line">  grade = &quot;excellent&quot;;</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const grade = (() =&gt; &#123;</div><div class="line">  if (result &lt; 50)</div><div class="line">    return &quot;糟糕的&quot;;</div><div class="line">  if (result &lt; 90)</div><div class="line">    return &quot;推荐的&quot;;</div><div class="line">  return &quot;excellent&quot;;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure></p>
+<h3 id="对象迭代"><a href="#对象迭代" class="headerlink" title="对象迭代"></a>对象迭代</h3><p>避免使用<code>for...in</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">const shared = &#123; foo: &quot;foo&quot; &#125;;</div><div class="line">const obj = Object.create(shared, &#123;</div><div class="line">  bar: &#123;</div><div class="line">    value: &quot;bar&quot;,</div><div class="line">    enumerable: true</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 糟糕的</div><div class="line">for (var prop in obj) &#123;</div><div class="line">  if (obj.hasOwnProperty(prop))</div><div class="line">    console.log(prop);</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">Object.keys(obj).forEach(prop =&gt; console.log(prop));</div></pre></td></tr></table></figure></p>
+<h3 id="把对象作为maps"><a href="#把对象作为maps" class="headerlink" title="把对象作为maps"></a>把对象作为maps</h3><p>虽然对象是一个合法的用例，但map是一个更好更强大的选择<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const me = &#123;</div><div class="line">  name: &quot;Ben&quot;,</div><div class="line">  age: 30</div><div class="line">&#125;;</div><div class="line">var meSize = Object.keys(me).length;</div><div class="line">meSize; // =&gt; 2</div><div class="line">me.country = &quot;Belgium&quot;;</div><div class="line">meSize++;</div><div class="line">meSize; // =&gt; 3</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const me = new Map();</div><div class="line">me.set(&quot;name&quot;, &quot;Ben&quot;);</div><div class="line">me.set(&quot;age&quot;, 30);</div><div class="line">me.size; // =&gt; 2</div><div class="line">me.set(&quot;country&quot;, &quot;Belgium&quot;);</div><div class="line">me.size; // =&gt; 3</div></pre></td></tr></table></figure></p>
+<h3 id="柯里化"><a href="#柯里化" class="headerlink" title="柯里化"></a>柯里化</h3><p>对许多开发者来说，柯里化是一个带有国外范的强大形式。合理化地使用它是非常妙的，但是请不要滥用它<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const sum = a =&gt; b =&gt; a + b;</div><div class="line">sum(5)(3); // =&gt; 8</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const sum = (a, b) =&gt; a + b;</div><div class="line">sum(5, 3); // =&gt; 8</div></pre></td></tr></table></figure></p>
+<h3 id="可读性"><a href="#可读性" class="headerlink" title="可读性"></a>可读性</h3><p>不要使用一些表面看起来很巧妙的技巧来导致你代码的意思模糊不清(即不可读)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">foo || doSomething();</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">if (!foo) doSomething();</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">void function() &#123; /* IIFE */ &#125;();</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">(function() &#123; /* IIFE */ &#125;());</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const n = ~~3.14;</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const n = Math.floor(3.14);</div></pre></td></tr></table></figure>
+<h3 id="代码复用"><a href="#代码复用" class="headerlink" title="代码复用"></a>代码复用</h3><p>不要抗拒去创建一些体积小,高度可组合、可重用的函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">arr[arr.length - 1];</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const first = arr =&gt; arr[0];</div><div class="line">const last = arr =&gt; first(arr.slice(-1));</div><div class="line">last(arr);</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const product = (a, b) =&gt; a * b;</div><div class="line">const triple = n =&gt; n * 3;</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const product = (a, b) =&gt; a * b;</div><div class="line">const triple = product.bind(null, 3);</div></pre></td></tr></table></figure>
+<h3 id="依赖性"><a href="#依赖性" class="headerlink" title="依赖性"></a>依赖性</h3><p>减少依赖。第三方的代码是你不了解的,不要仅仅为了几个可复制的函数而加载整个第三方文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">var _ = require(&quot;underscore&quot;);</div><div class="line">_.compact([&quot;foo&quot;, 0]));</div><div class="line">_.unique([&quot;foo&quot;, &quot;foo&quot;]);</div><div class="line">_.union([&quot;foo&quot;], [&quot;bar&quot;], [&quot;foo&quot;]);</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const compact = arr =&gt; arr.filter(el =&gt; el);</div><div class="line">const unique = arr =&gt; [...Set(arr)];</div><div class="line">const union = (...arr) =&gt; unique([].concat(...arr));</div><div class="line"></div><div class="line">compact([&quot;foo&quot;, 0]);</div><div class="line">unique([&quot;foo&quot;, &quot;foo&quot;]);</div><div class="line">union([&quot;foo&quot;], [&quot;bar&quot;], [&quot;foo&quot;]);</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+            <a href="/tags/翻译/" rel="tag"># 翻译</a>
+          
+            <a href="/tags/代码风格/" rel="tag"># 代码风格</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/web前端/前端代码指南-一/" rel="next" title="前端代码指南(一) —— HTML">
+                <i class="fa fa-chevron-left"></i> 前端代码指南(一) —— HTML
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/web前端/了解闭包/" rel="prev" title="了解闭包">
+                了解闭包 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Sean" />
+          <p class="site-author-name" itemprop="name">Sean</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#性能"><span class="nav-number">1.</span> <span class="nav-text">性能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无领域"><span class="nav-number">2.</span> <span class="nav-text">无领域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原生"><span class="nav-number">3.</span> <span class="nav-text">原生</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强制"><span class="nav-number">4.</span> <span class="nav-text">强制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环"><span class="nav-number">5.</span> <span class="nav-text">循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数"><span class="nav-number">6.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Apply"><span class="nav-number">7.</span> <span class="nav-text">Apply</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绑定"><span class="nav-number">8.</span> <span class="nav-text">绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高层级的函数"><span class="nav-number">9.</span> <span class="nav-text">高层级的函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结构"><span class="nav-number">10.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存"><span class="nav-number">11.</span> <span class="nav-text">缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">12.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件"><span class="nav-number">13.</span> <span class="nav-text">条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象迭代"><span class="nav-number">14.</span> <span class="nav-text">对象迭代</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#把对象作为maps"><span class="nav-number">15.</span> <span class="nav-text">把对象作为maps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#柯里化"><span class="nav-number">16.</span> <span class="nav-text">柯里化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可读性"><span class="nav-number">17.</span> <span class="nav-text">可读性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码复用"><span class="nav-number">18.</span> <span class="nav-text">代码复用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖性"><span class="nav-number">19.</span> <span class="nav-text">依赖性</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sean</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

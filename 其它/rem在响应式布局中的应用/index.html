@@ -1,0 +1,764 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="rem 响应式布局" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="rem/em/px/pt的基友关系px像素相对长度单位,相对于显示器屏幕分辨率而言 em相对长度单位,根据其父元素来设置字体大小 ptpoint，是印刷行业常用单位，等于1/72英寸 remCSS3新增的一个相对单位,是根据网页的跟元素（html）来设置字体大小 rem应用于适配rem的特性同样适用于width和height，我们可以根据根元素的font-size值来改变元素的宽高值，由此我们应该">
+<meta name="keywords" content="rem 响应式布局">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rem在响应式布局中的应用">
+<meta property="og:url" content="http://godgoods.com/其它/rem在响应式布局中的应用/index.html">
+<meta property="og:site_name" content="godgoods">
+<meta property="og:description" content="rem/em/px/pt的基友关系px像素相对长度单位,相对于显示器屏幕分辨率而言 em相对长度单位,根据其父元素来设置字体大小 ptpoint，是印刷行业常用单位，等于1/72英寸 remCSS3新增的一个相对单位,是根据网页的跟元素（html）来设置字体大小 rem应用于适配rem的特性同样适用于width和height，我们可以根据根元素的font-size值来改变元素的宽高值，由此我们应该">
+<meta property="og:updated_time" content="2017-05-12T06:28:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="rem在响应式布局中的应用">
+<meta name="twitter:description" content="rem/em/px/pt的基友关系px像素相对长度单位,相对于显示器屏幕分辨率而言 em相对长度单位,根据其父元素来设置字体大小 ptpoint，是印刷行业常用单位，等于1/72英寸 remCSS3新增的一个相对单位,是根据网页的跟元素（html）来设置字体大小 rem应用于适配rem的特性同样适用于width和height，我们可以根据根元素的font-size值来改变元素的宽高值，由此我们应该">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://godgoods.com/其它/rem在响应式布局中的应用/"/>
+
+
+
+
+
+  <title>rem在响应式布局中的应用 | godgoods</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-98870712-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?752f52fcdbfe15210fb443ca7e68f7fb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">godgoods</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Sean's 个人站</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://godgoods.com/其它/rem在响应式布局中的应用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="godgoods">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">rem在响应式布局中的应用</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-09-09T11:05:00+08:00">
+                2016-09-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="rem-em-px-pt的基友关系"><a href="#rem-em-px-pt的基友关系" class="headerlink" title="rem/em/px/pt的基友关系"></a>rem/em/px/pt的基友关系</h2><p><strong>px</strong><br>像素相对长度单位,相对于显示器屏幕分辨率而言</p>
+<p><strong>em</strong><br>相对长度单位,根据其父元素来设置字体大小</p>
+<p><strong>pt</strong><br>point，是印刷行业常用单位，等于1/72英寸</p>
+<p><strong>rem</strong><br>CSS3新增的一个相对单位,是根据网页的跟元素（html）来设置字体大小</p>
+<h2 id="rem应用于适配"><a href="#rem应用于适配" class="headerlink" title="rem应用于适配"></a>rem应用于适配</h2><p>rem的特性同样适用于width和height，我们可以根据根元素的font-size值来改变元素的宽高值，由此我们应该可以联想到我们可以根据屏幕大小动态地给html设定不同的值，从而达到我们css样式中的适配效果。</p>
+<h2 id="rem的适配规则"><a href="#rem的适配规则" class="headerlink" title="rem的适配规则"></a>rem的适配规则</h2><p><strong>1.选择基准</strong><br>虽然我们所写出的页面要在不同的屏幕大小设备上运行，但是我们写页面的时候，必须要选择其中一种屏幕大小作为初始的基准，而这个基准的选择应该根据我们所拿到的视觉稿来决定，</p>
+<p><strong>2.rem数值计算</strong><br>正常情况下rem的值默认为16px，这样在整个页面的css计算过程中太过繁琐。比如，现在有个30px宽度的元素，就得写成30/16rem。对于整个页面来说工作量还是挺大的。所以这里提供了俩种方法</p>
+<ul>
+<li><p>可以将html的font-size设置成100px<br>这样设置，在写单位时直接将数值除以100在加上rem的单位就可以了。如果设计稿的字体是16px；我们就可以写成1.6rem。</p>
+<ul>
+<li><strong>这里为什么不用10？</strong><br>因为google等浏览器对最小字体有限制，即最小为12px，所以设置10px会有问题。</li>
+</ul>
+</li>
+<li><p>使用sass</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$rem : 16x;</div><div class="line">@function px_rem($px)&#123;</div><div class="line">    @return ($px/$rem) + rem;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>3.动态设置html的font-size</strong><br>随着屏幕大小的改变，html的font-size的值应该是<code>基准rem*改变后的屏幕宽度 / 基准屏幕宽度</code></p>
+<ul>
+<li><p>利用css的media query来设置（这种是一个宽度区间内是一个rem）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2)&#123;</div><div class="line">      $rem : 16x;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>利用javascript来动态设置（这种方法每一个宽度点都会有一个新的rem）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.getElementsByTagName(<span class="string">'html'</span>)[<span class="number">0</span>].style.fontSize = 基准rem*<span class="built_in">window</span>.innerWidth / 基准屏幕宽度 + <span class="string">'px'</span>;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="考虑dpr"><a href="#考虑dpr" class="headerlink" title="考虑dpr"></a>考虑dpr</h2><p>一般我们获取到的视觉稿大部分尺寸是双倍大小的，我们一般会自觉的将标注/2，但是当我们配合rem使用时，完全可以按照视觉稿上的尺寸来设置。</p>
+<ul>
+<li><p>设计给的稿子双倍的原因是iphone等高清屏手机的存在，高清屏的像素比(device pixel ratio)dpr比较大，所以显示的像素较为清晰。</p>
+</li>
+<li><p>一般手机的dpr是1，iphone4，iphone5这种高清屏是2，iphone6s plus这种高清屏是3，可以通过js的window.devicePixelRatio获取到当前设备的dpr，所以iphone6给的视觉稿大小是（*2）750×1334了。</p>
+</li>
+<li><p>拿到了dpr之后，我们就可以在viewport meta头里，取消让浏览器自动缩放页面，而自己去设置viewport的content</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meta.setAttribute(<span class="string">'content'</span>, <span class="string">'initial-scale='</span> + <span class="number">1</span>/dpr + <span class="string">', maximum-scale='</span> + <span class="number">1</span>/dpr + <span class="string">', minimum-scale='</span> + <span class="number">1</span>/dpr + <span class="string">', user-scalable=no'</span>);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这样我们就直接可以使用视觉稿上的尺寸了。</p>
+<p><a href="http://bigdots.github.io/blogSource/example/rem.html" target="_blank" rel="external">点击查看示例&gt;&gt;</a></p>
+<p>我的博客:<a href="http://bigdots.github.io" target="_blank" rel="external">http://bigdots.github.io</a>、<a href="http://www.cnblogs.com/yzg1/" target="_blank" rel="external">http://www.cnblogs.com/yzg1/</a></p>
+<p>如果觉得本文不错的话，帮忙点击下面的推荐哦,谢谢！</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/响应式开发/" rel="tag"># 响应式开发</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/web前端/了解闭包/" rel="next" title="了解闭包">
+                <i class="fa fa-chevron-left"></i> 了解闭包
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/web前端/Jquery属性获取——attr()与prop()/" rel="prev" title="Jquery属性获取 —— attr()与prop()">
+                Jquery属性获取 —— attr()与prop() <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Sean" />
+          <p class="site-author-name" itemprop="name">Sean</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#rem-em-px-pt的基友关系"><span class="nav-number">1.</span> <span class="nav-text">rem/em/px/pt的基友关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rem应用于适配"><span class="nav-number">2.</span> <span class="nav-text">rem应用于适配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rem的适配规则"><span class="nav-number">3.</span> <span class="nav-text">rem的适配规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#考虑dpr"><span class="nav-number">4.</span> <span class="nav-text">考虑dpr</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sean</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
