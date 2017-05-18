@@ -7,5 +7,5 @@ Disallow: /css/
 Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
-Sitemap: godgoods.website/sitemap.xml
-Sitemap: godgoods.website/baidusitemap.xml
+Sitemap: www.godgoods.website/sitemap.xml
+Sitemap: www.godgoods.website/baidusitemap.xml
