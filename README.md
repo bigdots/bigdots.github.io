@@ -1,3 +1,3 @@
-# my blog by hexo
+## my blog by hexo
 
-[http://godgoods.website/](http://godgoods.website/)
+url: [http://www.godgoods.website/](http://www.godgoods.website/)
