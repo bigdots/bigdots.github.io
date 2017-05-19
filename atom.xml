@@ -4,9 +4,9 @@
   <subtitle>Sean&#39;s 个人站</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://www.godgoods.com/"/>
+  <link href="http://www.godgoods.website/"/>
   <updated>2017-05-12T06:05:24.000Z</updated>
-  <id>http://www.godgoods.com/</id>
+  <id>http://www.godgoods.website/</id>
   
   <author>
     <name>Sean</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>第一次react-native项目实践要点总结</title>
-    <link href="http://www.godgoods.com/web%E5%89%8D%E7%AB%AF/%E7%AC%AC%E4%B8%80%E6%AC%A1react-native%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%B7%B5%E8%A6%81%E7%82%B9%E6%80%BB%E7%BB%93/"/>
-    <id>http://www.godgoods.com/web前端/第一次react-native项目实践要点总结/</id>
+    <link href="http://www.godgoods.website/web%E5%89%8D%E7%AB%AF/%E7%AC%AC%E4%B8%80%E6%AC%A1react-native%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%B7%B5%E8%A6%81%E7%82%B9%E6%80%BB%E7%BB%93/"/>
+    <id>http://www.godgoods.website/web前端/第一次react-native项目实践要点总结/</id>
     <published>2016-10-21T02:14:29.000Z</published>
     <updated>2017-05-12T06:05:24.000Z</updated>
     
@@ -127,17 +127,17 @@
     
     </summary>
     
-      <category term="web前端" scheme="http://www.godgoods.com/categories/web%E5%89%8D%E7%AB%AF/"/>
+      <category term="web前端" scheme="http://www.godgoods.website/categories/web%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="react-native" scheme="http://www.godgoods.com/tags/react-native/"/>
+      <category term="react-native" scheme="http://www.godgoods.website/tags/react-native/"/>
     
   </entry>
   
   <entry>
     <title>jsonp 演示实例 —— 基于node</title>
-    <link href="http://www.godgoods.com/web%E5%89%8D%E7%AB%AF/nodejs%20%E6%BC%94%E7%A4%BAjsonp/"/>
-    <id>http://www.godgoods.com/web前端/nodejs 演示jsonp/</id>
+    <link href="http://www.godgoods.website/web%E5%89%8D%E7%AB%AF/nodejs%20%E6%BC%94%E7%A4%BAjsonp/"/>
+    <id>http://www.godgoods.website/web前端/nodejs 演示jsonp/</id>
     <published>2016-09-22T02:49:48.000Z</published>
     <updated>2017-05-12T06:31:30.000Z</updated>
     
@@ -218,17 +218,79 @@
     
     </summary>
     
-      <category term="web前端" scheme="http://www.godgoods.com/categories/web%E5%89%8D%E7%AB%AF/"/>
+      <category term="web前端" scheme="http://www.godgoods.website/categories/web%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="javascript" scheme="http://www.godgoods.com/tags/javascript/"/>
+      <category term="javascript" scheme="http://www.godgoods.website/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>rem在响应式布局中的应用</title>
+    <link href="http://www.godgoods.website/web%E5%89%8D%E7%AB%AF/rem%E5%9C%A8%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/"/>
+    <id>http://www.godgoods.website/web前端/rem在响应式布局中的应用/</id>
+    <published>2016-09-09T03:05:00.000Z</published>
+    <updated>2017-05-12T06:42:10.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="rem-em-px-pt的基友关系"><a href="#rem-em-px-pt的基友关系" class="headerlink" title="rem/em/px/pt的基友关系"></a>rem/em/px/pt的基友关系</h2><p><strong>px</strong><br>像素相对长度单位,相对于显示器屏幕分辨率而言</p>
+<p><strong>em</strong><br>相对长度单位,根据其父元素来设置字体大小</p>
+<p><strong>pt</strong><br>point，是印刷行业常用单位，等于1/72英寸</p>
+<p><strong>rem</strong><br>CSS3新增的一个相对单位,是根据网页的跟元素（html）来设置字体大小</p>
+<h2 id="rem应用于适配"><a href="#rem应用于适配" class="headerlink" title="rem应用于适配"></a>rem应用于适配</h2><p>rem的特性同样适用于width和height，我们可以根据根元素的font-size值来改变元素的宽高值，由此我们应该可以联想到我们可以根据屏幕大小动态地给html设定不同的值，从而达到我们css样式中的适配效果。</p>
+<h2 id="rem的适配规则"><a href="#rem的适配规则" class="headerlink" title="rem的适配规则"></a>rem的适配规则</h2><p><strong>1.选择基准</strong><br>虽然我们所写出的页面要在不同的屏幕大小设备上运行，但是我们写页面的时候，必须要选择其中一种屏幕大小作为初始的基准，而这个基准的选择应该根据我们所拿到的视觉稿来决定，</p>
+<p><strong>2.rem数值计算</strong><br>正常情况下rem的值默认为16px，这样在整个页面的css计算过程中太过繁琐。比如，现在有个30px宽度的元素，就得写成30/16rem。对于整个页面来说工作量还是挺大的。所以这里提供了俩种方法</p>
+<ul>
+<li><p>可以将html的font-size设置成100px<br>这样设置，在写单位时直接将数值除以100在加上rem的单位就可以了。如果设计稿的字体是16px；我们就可以写成1.6rem。</p>
+<ul>
+<li><strong>这里为什么不用10？</strong><br>因为google等浏览器对最小字体有限制，即最小为12px，所以设置10px会有问题。</li>
+</ul>
+</li>
+<li><p>使用sass</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$rem : 16x;</div><div class="line">@function px_rem($px)&#123;</div><div class="line">    @return ($px/$rem) + rem;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>3.动态设置html的font-size</strong><br>随着屏幕大小的改变，html的font-size的值应该是<code>基准rem*改变后的屏幕宽度 / 基准屏幕宽度</code></p>
+<ul>
+<li><p>利用css的media query来设置（这种是一个宽度区间内是一个rem）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2)&#123;</div><div class="line">      $rem : 16x;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>利用javascript来动态设置（这种方法每一个宽度点都会有一个新的rem）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.getElementsByTagName(<span class="string">'html'</span>)[<span class="number">0</span>].style.fontSize = 基准rem*<span class="built_in">window</span>.innerWidth / 基准屏幕宽度 + <span class="string">'px'</span>;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="考虑dpr"><a href="#考虑dpr" class="headerlink" title="考虑dpr"></a>考虑dpr</h2><p>一般我们获取到的视觉稿大部分尺寸是双倍大小的，我们一般会自觉的将标注/2，但是当我们配合rem使用时，完全可以按照视觉稿上的尺寸来设置。</p>
+<ul>
+<li><p>设计给的稿子双倍的原因是iphone等高清屏手机的存在，高清屏的像素比(device pixel ratio)dpr比较大，所以显示的像素较为清晰。</p>
+</li>
+<li><p>一般手机的dpr是1，iphone4，iphone5这种高清屏是2，iphone6s plus这种高清屏是3，可以通过js的window.devicePixelRatio获取到当前设备的dpr，所以iphone6给的视觉稿大小是（*2）750×1334了。</p>
+</li>
+<li><p>拿到了dpr之后，我们就可以在viewport meta头里，取消让浏览器自动缩放页面，而自己去设置viewport的content</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meta.setAttribute(<span class="string">'content'</span>, <span class="string">'initial-scale='</span> + <span class="number">1</span>/dpr + <span class="string">', maximum-scale='</span> + <span class="number">1</span>/dpr + <span class="string">', minimum-scale='</span> + <span class="number">1</span>/dpr + <span class="string">', user-scalable=no'</span>);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这样我们就直接可以使用视觉稿上的尺寸了。</p>
+<p><a href="http://bigdots.github.io/blogSource/example/rem.html" target="_blank" rel="external">点击查看示例&gt;&gt;</a></p>
+<p>我的博客:<a href="http://bigdots.github.io" target="_blank" rel="external">http://bigdots.github.io</a>、<a href="http://www.cnblogs.com/yzg1/" target="_blank" rel="external">http://www.cnblogs.com/yzg1/</a></p>
+<p>如果觉得本文不错的话，帮忙点击下面的推荐哦,谢谢！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;rem-em-px-pt的基友关系&quot;&gt;&lt;a href=&quot;#rem-em-px-pt的基友关系&quot; class=&quot;headerlink&quot; title=&quot;rem/em/px/pt的基友关系&quot;&gt;&lt;/a&gt;rem/em/px/pt的基友关系&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;px
+    
+    </summary>
+    
+      <category term="web前端" scheme="http://www.godgoods.website/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="响应式开发" scheme="http://www.godgoods.website/tags/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
   <entry>
     <title>Jquery属性获取 —— attr()与prop()</title>
-    <link href="http://www.godgoods.com/web%E5%89%8D%E7%AB%AF/Jquery%E5%B1%9E%E6%80%A7%E8%8E%B7%E5%8F%96%E2%80%94%E2%80%94attr()%E4%B8%8Eprop()/"/>
-    <id>http://www.godgoods.com/web前端/Jquery属性获取——attr()与prop()/</id>
+    <link href="http://www.godgoods.website/web%E5%89%8D%E7%AB%AF/Jquery%E5%B1%9E%E6%80%A7%E8%8E%B7%E5%8F%96%E2%80%94%E2%80%94attr()%E4%B8%8Eprop()/"/>
+    <id>http://www.godgoods.website/web前端/Jquery属性获取——attr()与prop()/</id>
     <published>2016-09-09T03:05:00.000Z</published>
     <updated>2017-05-12T06:23:47.000Z</updated>
     
@@ -295,79 +357,17 @@ $(&quot;#second&quot;).attr(&quot;selected&quot;,&quot;selected&quot;);
     
     </summary>
     
-      <category term="web前端" scheme="http://www.godgoods.com/categories/web%E5%89%8D%E7%AB%AF/"/>
+      <category term="web前端" scheme="http://www.godgoods.website/categories/web%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="javascript" scheme="http://www.godgoods.com/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>rem在响应式布局中的应用</title>
-    <link href="http://www.godgoods.com/web%E5%89%8D%E7%AB%AF/rem%E5%9C%A8%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/"/>
-    <id>http://www.godgoods.com/web前端/rem在响应式布局中的应用/</id>
-    <published>2016-09-09T03:05:00.000Z</published>
-    <updated>2017-05-12T06:42:10.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="rem-em-px-pt的基友关系"><a href="#rem-em-px-pt的基友关系" class="headerlink" title="rem/em/px/pt的基友关系"></a>rem/em/px/pt的基友关系</h2><p><strong>px</strong><br>像素相对长度单位,相对于显示器屏幕分辨率而言</p>
-<p><strong>em</strong><br>相对长度单位,根据其父元素来设置字体大小</p>
-<p><strong>pt</strong><br>point，是印刷行业常用单位，等于1/72英寸</p>
-<p><strong>rem</strong><br>CSS3新增的一个相对单位,是根据网页的跟元素（html）来设置字体大小</p>
-<h2 id="rem应用于适配"><a href="#rem应用于适配" class="headerlink" title="rem应用于适配"></a>rem应用于适配</h2><p>rem的特性同样适用于width和height，我们可以根据根元素的font-size值来改变元素的宽高值，由此我们应该可以联想到我们可以根据屏幕大小动态地给html设定不同的值，从而达到我们css样式中的适配效果。</p>
-<h2 id="rem的适配规则"><a href="#rem的适配规则" class="headerlink" title="rem的适配规则"></a>rem的适配规则</h2><p><strong>1.选择基准</strong><br>虽然我们所写出的页面要在不同的屏幕大小设备上运行，但是我们写页面的时候，必须要选择其中一种屏幕大小作为初始的基准，而这个基准的选择应该根据我们所拿到的视觉稿来决定，</p>
-<p><strong>2.rem数值计算</strong><br>正常情况下rem的值默认为16px，这样在整个页面的css计算过程中太过繁琐。比如，现在有个30px宽度的元素，就得写成30/16rem。对于整个页面来说工作量还是挺大的。所以这里提供了俩种方法</p>
-<ul>
-<li><p>可以将html的font-size设置成100px<br>这样设置，在写单位时直接将数值除以100在加上rem的单位就可以了。如果设计稿的字体是16px；我们就可以写成1.6rem。</p>
-<ul>
-<li><strong>这里为什么不用10？</strong><br>因为google等浏览器对最小字体有限制，即最小为12px，所以设置10px会有问题。</li>
-</ul>
-</li>
-<li><p>使用sass</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$rem : 16x;</div><div class="line">@function px_rem($px)&#123;</div><div class="line">    @return ($px/$rem) + rem;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><strong>3.动态设置html的font-size</strong><br>随着屏幕大小的改变，html的font-size的值应该是<code>基准rem*改变后的屏幕宽度 / 基准屏幕宽度</code></p>
-<ul>
-<li><p>利用css的media query来设置（这种是一个宽度区间内是一个rem）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2)&#123;</div><div class="line">      $rem : 16x;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>利用javascript来动态设置（这种方法每一个宽度点都会有一个新的rem）</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.getElementsByTagName(<span class="string">'html'</span>)[<span class="number">0</span>].style.fontSize = 基准rem*<span class="built_in">window</span>.innerWidth / 基准屏幕宽度 + <span class="string">'px'</span>;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="考虑dpr"><a href="#考虑dpr" class="headerlink" title="考虑dpr"></a>考虑dpr</h2><p>一般我们获取到的视觉稿大部分尺寸是双倍大小的，我们一般会自觉的将标注/2，但是当我们配合rem使用时，完全可以按照视觉稿上的尺寸来设置。</p>
-<ul>
-<li><p>设计给的稿子双倍的原因是iphone等高清屏手机的存在，高清屏的像素比(device pixel ratio)dpr比较大，所以显示的像素较为清晰。</p>
-</li>
-<li><p>一般手机的dpr是1，iphone4，iphone5这种高清屏是2，iphone6s plus这种高清屏是3，可以通过js的window.devicePixelRatio获取到当前设备的dpr，所以iphone6给的视觉稿大小是（*2）750×1334了。</p>
-</li>
-<li><p>拿到了dpr之后，我们就可以在viewport meta头里，取消让浏览器自动缩放页面，而自己去设置viewport的content</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meta.setAttribute(<span class="string">'content'</span>, <span class="string">'initial-scale='</span> + <span class="number">1</span>/dpr + <span class="string">', maximum-scale='</span> + <span class="number">1</span>/dpr + <span class="string">', minimum-scale='</span> + <span class="number">1</span>/dpr + <span class="string">', user-scalable=no'</span>);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>这样我们就直接可以使用视觉稿上的尺寸了。</p>
-<p><a href="http://bigdots.github.io/blogSource/example/rem.html" target="_blank" rel="external">点击查看示例&gt;&gt;</a></p>
-<p>我的博客:<a href="http://bigdots.github.io" target="_blank" rel="external">http://bigdots.github.io</a>、<a href="http://www.cnblogs.com/yzg1/" target="_blank" rel="external">http://www.cnblogs.com/yzg1/</a></p>
-<p>如果觉得本文不错的话，帮忙点击下面的推荐哦,谢谢！</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;rem-em-px-pt的基友关系&quot;&gt;&lt;a href=&quot;#rem-em-px-pt的基友关系&quot; class=&quot;headerlink&quot; title=&quot;rem/em/px/pt的基友关系&quot;&gt;&lt;/a&gt;rem/em/px/pt的基友关系&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;px
-    
-    </summary>
-    
-      <category term="web前端" scheme="http://www.godgoods.com/categories/web%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="响应式开发" scheme="http://www.godgoods.com/tags/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%BC%80%E5%8F%91/"/>
+      <category term="javascript" scheme="http://www.godgoods.website/tags/javascript/"/>
     
   </entry>
   
   <entry>
     <title>了解闭包</title>
-    <link href="http://www.godgoods.com/web%E5%89%8D%E7%AB%AF/%E4%BA%86%E8%A7%A3%E9%97%AD%E5%8C%85/"/>
-    <id>http://www.godgoods.com/web前端/了解闭包/</id>
+    <link href="http://www.godgoods.website/web%E5%89%8D%E7%AB%AF/%E4%BA%86%E8%A7%A3%E9%97%AD%E5%8C%85/"/>
+    <id>http://www.godgoods.website/web前端/了解闭包/</id>
     <published>2016-09-09T03:05:00.000Z</published>
     <updated>2017-05-12T06:14:15.000Z</updated>
     
@@ -426,17 +426,17 @@ $(&quot;#second&quot;).attr(&quot;selected&quot;,&quot;selected&quot;);
     
     </summary>
     
-      <category term="web前端" scheme="http://www.godgoods.com/categories/web%E5%89%8D%E7%AB%AF/"/>
+      <category term="web前端" scheme="http://www.godgoods.website/categories/web%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="javascript" scheme="http://www.godgoods.com/tags/javascript/"/>
+      <category term="javascript" scheme="http://www.godgoods.website/tags/javascript/"/>
     
   </entry>
   
   <entry>
     <title>前端代码指南(一) —— HTML</title>
-    <link href="http://www.godgoods.com/web%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E6%8C%87%E5%8D%97-%E4%B8%80/"/>
-    <id>http://www.godgoods.com/web前端/前端代码指南-一/</id>
+    <link href="http://www.godgoods.website/web%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E6%8C%87%E5%8D%97-%E4%B8%80/"/>
+    <id>http://www.godgoods.website/web前端/前端代码指南-一/</id>
     <published>2016-09-09T03:05:00.000Z</published>
     <updated>2017-05-12T06:23:30.000Z</updated>
     
@@ -464,21 +464,69 @@ $(&quot;#second&quot;).attr(&quot;selected&quot;,&quot;selected&quot;);
     
     </summary>
     
-      <category term="web前端" scheme="http://www.godgoods.com/categories/web%E5%89%8D%E7%AB%AF/"/>
+      <category term="web前端" scheme="http://www.godgoods.website/categories/web%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="翻译" scheme="http://www.godgoods.com/tags/%E7%BF%BB%E8%AF%91/"/>
+      <category term="翻译" scheme="http://www.godgoods.website/tags/%E7%BF%BB%E8%AF%91/"/>
     
-      <category term="代码风格" scheme="http://www.godgoods.com/tags/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC/"/>
+      <category term="代码风格" scheme="http://www.godgoods.website/tags/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC/"/>
     
-      <category term="HTML" scheme="http://www.godgoods.com/tags/HTML/"/>
+      <category term="HTML" scheme="http://www.godgoods.website/tags/HTML/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>前端代码指南(二) —— CSS</title>
+    <link href="http://www.godgoods.website/web%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E6%8C%87%E5%8D%97-%E4%BA%8C/"/>
+    <id>http://www.godgoods.website/web前端/前端代码指南-二/</id>
+    <published>2016-09-09T03:05:00.000Z</published>
+    <updated>2017-05-12T06:23:43.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="/2015/12/24/前端代码指南-一/">前端代码指南(一)</a><br><a href="/2015/12/25/前端代码指南-二/">前端代码指南(二)</a><br><a href="/2015/12/25/前端代码指南-三/">前端代码指南(三)</a></p>
+<h3 id="分号"><a href="#分号" class="headerlink" title="分号"></a>分号</h3><p>分号是CSS语句的分离器,请把它放在句尾。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  color: red</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  color: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h3><p>最理想的情况是盒模型在整个文档是一样的。全局设置* { box-sizing:border-box;}是可以的,但最好不要在特定的元素上改变默认的盒模型。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  width: 100%;</div><div class="line">  padding: 10px;</div><div class="line">  box-sizing: border-box;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  padding: 10px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="文档流"><a href="#文档流" class="headerlink" title="文档流"></a>文档流</h3><p> 不要改变一个元素的默认样式，尽可能保持元素在自然的文档流中。例如,删除图像下面的空白不应该改变其默认显示:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">img &#123;</div><div class="line">  display: block;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">img &#123;</div><div class="line">  vertical-align: middle;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>同样的，尽可能不要使元素脱离文档流<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  width: 100px;</div><div class="line">  position: absolute;</div><div class="line">  right: 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  width: 100px;</div><div class="line">  margin-left: auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><p>css有很多方法来定位元素,但是最好不要使用下面的属性/值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">display: block;</div><div class="line">display: flex;</div><div class="line">position: relative;</div><div class="line">position: sticky;</div><div class="line">position: absolute;</div><div class="line">position: fixed;</div></pre></td></tr></table></figure></p>
+<h3 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h3><p>减少选择器与DOM的耦合度。当你的选择器匹配的元素超过3层结构(伪类、后代或兄弟元素)。考虑添加一个类来匹配你想要的元素吧<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div:first-of-type :last-child &gt; p ~ *</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div:first-of-type .info</div></pre></td></tr></table></figure></p>
+<p>避免过载你的选择器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">img[src$=svg], ul &gt; li:first-child &#123;</div><div class="line">  opacity: 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">[src$=svg], ul &gt; :first-child &#123;</div><div class="line">  opacity: 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><p>不要让属性值和选择器难以被覆盖(应该是指优先级不要过高)，减少使用id和!important的使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">.bar &#123;</div><div class="line">  color: green !important;</div><div class="line">&#125;</div><div class="line">.foo &#123;</div><div class="line">  color: red;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">.foo.bar &#123;</div><div class="line">  color: green;</div><div class="line">&#125;</div><div class="line">.foo &#123;</div><div class="line">  color: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="覆盖"><a href="#覆盖" class="headerlink" title="覆盖"></a>覆盖</h3><p>覆盖样式会导致选择器和调试变得困难，请尽量避免<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">li &#123;</div><div class="line">  visibility: hidden;</div><div class="line">&#125;</div><div class="line">li:first-child &#123;</div><div class="line">  visibility: visible;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">li + li &#123;</div><div class="line">  visibility: hidden;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>不要重复书写可以继承的样式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div h1, div p &#123;</div><div class="line">  text-shadow: 0 1px 0 #fff;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  text-shadow: 0 1px 0 #fff;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="简洁"><a href="#简洁" class="headerlink" title="简洁"></a>简洁</h3><p>保持你的代码简洁，尽量使用简写属性,避免使用多个属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  transition: all 1s;</div><div class="line">  top: 50%;</div><div class="line">  margin-top: -10px;</div><div class="line">  padding-top: 5px;</div><div class="line">  padding-right: 10px;</div><div class="line">  padding-bottom: 20px;</div><div class="line">  padding-left: 10px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  transition: 1s;</div><div class="line">  top: calc(50% - 10px);</div><div class="line">  padding: 5px 10px 20px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h3><p>英文优于数学表达式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">:nth-child(2n + 1) &#123;</div><div class="line">  transform: rotate(360deg);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">:nth-child(odd) &#123;</div><div class="line">  transform: rotate(1turn);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="前缀"><a href="#前缀" class="headerlink" title="前缀"></a>前缀</h3><p>积极删除过时的前缀。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  transform: scale(2);</div><div class="line">  -webkit-transform: scale(2);</div><div class="line">  -moz-transform: scale(2);</div><div class="line">  -ms-transform: scale(2);</div><div class="line">  transition: 1s;</div><div class="line">  -webkit-transition: 1s;</div><div class="line">  -moz-transition: 1s;</div><div class="line">  -ms-transition: 1s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  -webkit-transform: scale(2);</div><div class="line">  transform: scale(2);</div><div class="line">  transition: 1s;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h3><p><code>animations</code>和<code>transitions</code> ，优先选择<code>transitions</code> 。除了 <code>opacity</code> 和 <code>transform</code>属性，其他属性避免使用<code>animations</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div:hover &#123;</div><div class="line">  animation: move 1s forwards;</div><div class="line">&#125;</div><div class="line">@keyframes move &#123;</div><div class="line">  100% &#123;</div><div class="line">    margin-left: 100px;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div:hover &#123;</div><div class="line">  transition: 1s;</div><div class="line">  transform: translateX(100px);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="单位"><a href="#单位" class="headerlink" title="单位"></a>单位</h3><p>不要对不需要使用单位的值使用单位；如果你要使用相对单位最好使用<code>rem</code>；使用秒而不是毫秒<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  margin: 0px;</div><div class="line">  font-size: .9em;</div><div class="line">  line-height: 22px;</div><div class="line">  transition: 500ms;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  margin: 0;</div><div class="line">  font-size: .9rem;</div><div class="line">  line-height: 1.5;</div><div class="line">  transition: .5s;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h3><p>如果你需要使用透明度，请使用<code>rgba</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  color: hsl(103, 54%, 43%);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  color: #5a3;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="绘制"><a href="#绘制" class="headerlink" title="绘制"></a>绘制</h3><p>如果资源文件可以轻易在css中绘制出来，就避免HTTP请求来加载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div::before &#123;</div><div class="line">  content: url(white-circle.svg);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div::before &#123;</div><div class="line">  content: &quot;&quot;;</div><div class="line">  display: block;</div><div class="line">  width: 20px;</div><div class="line">  height: 20px;</div><div class="line">  border-radius: 50%;</div><div class="line">  background: #fff;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Hacks"><a href="#Hacks" class="headerlink" title="Hacks"></a>Hacks</h3><p>尽量不要使用Hacks<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  // position: relative;</div><div class="line">  transform: translateZ(0);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  /* position: relative; */</div><div class="line">  will-change: transform;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;/2015/12/24/前端代码指南-一/&quot;&gt;前端代码指南(一)&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;/2015/12/25/前端代码指南-二/&quot;&gt;前端代码指南(二)&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;/2015/12/25/前端代码指南-三/&quot;&gt;前端代码指南(
+    
+    </summary>
+    
+      <category term="web前端" scheme="http://www.godgoods.website/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="翻译" scheme="http://www.godgoods.website/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="代码风格" scheme="http://www.godgoods.website/tags/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC/"/>
+    
+      <category term="css" scheme="http://www.godgoods.website/tags/css/"/>
     
   </entry>
   
   <entry>
     <title>前端代码指南(三) —— javascript</title>
-    <link href="http://www.godgoods.com/web%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E6%8C%87%E5%8D%97-%E4%B8%89/"/>
-    <id>http://www.godgoods.com/web前端/前端代码指南-三/</id>
+    <link href="http://www.godgoods.website/web%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E6%8C%87%E5%8D%97-%E4%B8%89/"/>
+    <id>http://www.godgoods.website/web前端/前端代码指南-三/</id>
     <published>2016-09-09T03:05:00.000Z</published>
     <updated>2017-05-12T06:23:38.000Z</updated>
     
@@ -522,69 +570,21 @@ $(&quot;#second&quot;).attr(&quot;selected&quot;,&quot;selected&quot;);
     
     </summary>
     
-      <category term="web前端" scheme="http://www.godgoods.com/categories/web%E5%89%8D%E7%AB%AF/"/>
+      <category term="web前端" scheme="http://www.godgoods.website/categories/web%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="javascript" scheme="http://www.godgoods.com/tags/javascript/"/>
+      <category term="javascript" scheme="http://www.godgoods.website/tags/javascript/"/>
     
-      <category term="翻译" scheme="http://www.godgoods.com/tags/%E7%BF%BB%E8%AF%91/"/>
+      <category term="翻译" scheme="http://www.godgoods.website/tags/%E7%BF%BB%E8%AF%91/"/>
     
-      <category term="代码风格" scheme="http://www.godgoods.com/tags/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端代码指南(二) —— CSS</title>
-    <link href="http://www.godgoods.com/web%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E6%8C%87%E5%8D%97-%E4%BA%8C/"/>
-    <id>http://www.godgoods.com/web前端/前端代码指南-二/</id>
-    <published>2016-09-09T03:05:00.000Z</published>
-    <updated>2017-05-12T06:23:43.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="/2015/12/24/前端代码指南-一/">前端代码指南(一)</a><br><a href="/2015/12/25/前端代码指南-二/">前端代码指南(二)</a><br><a href="/2015/12/25/前端代码指南-三/">前端代码指南(三)</a></p>
-<h3 id="分号"><a href="#分号" class="headerlink" title="分号"></a>分号</h3><p>分号是CSS语句的分离器,请把它放在句尾。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  color: red</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  color: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h3><p>最理想的情况是盒模型在整个文档是一样的。全局设置* { box-sizing:border-box;}是可以的,但最好不要在特定的元素上改变默认的盒模型。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  width: 100%;</div><div class="line">  padding: 10px;</div><div class="line">  box-sizing: border-box;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  padding: 10px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="文档流"><a href="#文档流" class="headerlink" title="文档流"></a>文档流</h3><p> 不要改变一个元素的默认样式，尽可能保持元素在自然的文档流中。例如,删除图像下面的空白不应该改变其默认显示:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">img &#123;</div><div class="line">  display: block;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">img &#123;</div><div class="line">  vertical-align: middle;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>同样的，尽可能不要使元素脱离文档流<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  width: 100px;</div><div class="line">  position: absolute;</div><div class="line">  right: 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  width: 100px;</div><div class="line">  margin-left: auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><p>css有很多方法来定位元素,但是最好不要使用下面的属性/值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">display: block;</div><div class="line">display: flex;</div><div class="line">position: relative;</div><div class="line">position: sticky;</div><div class="line">position: absolute;</div><div class="line">position: fixed;</div></pre></td></tr></table></figure></p>
-<h3 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h3><p>减少选择器与DOM的耦合度。当你的选择器匹配的元素超过3层结构(伪类、后代或兄弟元素)。考虑添加一个类来匹配你想要的元素吧<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div:first-of-type :last-child &gt; p ~ *</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div:first-of-type .info</div></pre></td></tr></table></figure></p>
-<p>避免过载你的选择器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">img[src$=svg], ul &gt; li:first-child &#123;</div><div class="line">  opacity: 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">[src$=svg], ul &gt; :first-child &#123;</div><div class="line">  opacity: 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><p>不要让属性值和选择器难以被覆盖(应该是指优先级不要过高)，减少使用id和!important的使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">.bar &#123;</div><div class="line">  color: green !important;</div><div class="line">&#125;</div><div class="line">.foo &#123;</div><div class="line">  color: red;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">.foo.bar &#123;</div><div class="line">  color: green;</div><div class="line">&#125;</div><div class="line">.foo &#123;</div><div class="line">  color: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="覆盖"><a href="#覆盖" class="headerlink" title="覆盖"></a>覆盖</h3><p>覆盖样式会导致选择器和调试变得困难，请尽量避免<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">li &#123;</div><div class="line">  visibility: hidden;</div><div class="line">&#125;</div><div class="line">li:first-child &#123;</div><div class="line">  visibility: visible;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">li + li &#123;</div><div class="line">  visibility: hidden;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>不要重复书写可以继承的样式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div h1, div p &#123;</div><div class="line">  text-shadow: 0 1px 0 #fff;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  text-shadow: 0 1px 0 #fff;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="简洁"><a href="#简洁" class="headerlink" title="简洁"></a>简洁</h3><p>保持你的代码简洁，尽量使用简写属性,避免使用多个属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  transition: all 1s;</div><div class="line">  top: 50%;</div><div class="line">  margin-top: -10px;</div><div class="line">  padding-top: 5px;</div><div class="line">  padding-right: 10px;</div><div class="line">  padding-bottom: 20px;</div><div class="line">  padding-left: 10px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  transition: 1s;</div><div class="line">  top: calc(50% - 10px);</div><div class="line">  padding: 5px 10px 20px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h3><p>英文优于数学表达式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">:nth-child(2n + 1) &#123;</div><div class="line">  transform: rotate(360deg);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">:nth-child(odd) &#123;</div><div class="line">  transform: rotate(1turn);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="前缀"><a href="#前缀" class="headerlink" title="前缀"></a>前缀</h3><p>积极删除过时的前缀。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  transform: scale(2);</div><div class="line">  -webkit-transform: scale(2);</div><div class="line">  -moz-transform: scale(2);</div><div class="line">  -ms-transform: scale(2);</div><div class="line">  transition: 1s;</div><div class="line">  -webkit-transition: 1s;</div><div class="line">  -moz-transition: 1s;</div><div class="line">  -ms-transition: 1s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  -webkit-transform: scale(2);</div><div class="line">  transform: scale(2);</div><div class="line">  transition: 1s;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h3><p><code>animations</code>和<code>transitions</code> ，优先选择<code>transitions</code> 。除了 <code>opacity</code> 和 <code>transform</code>属性，其他属性避免使用<code>animations</code>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div:hover &#123;</div><div class="line">  animation: move 1s forwards;</div><div class="line">&#125;</div><div class="line">@keyframes move &#123;</div><div class="line">  100% &#123;</div><div class="line">    margin-left: 100px;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div:hover &#123;</div><div class="line">  transition: 1s;</div><div class="line">  transform: translateX(100px);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="单位"><a href="#单位" class="headerlink" title="单位"></a>单位</h3><p>不要对不需要使用单位的值使用单位；如果你要使用相对单位最好使用<code>rem</code>；使用秒而不是毫秒<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  margin: 0px;</div><div class="line">  font-size: .9em;</div><div class="line">  line-height: 22px;</div><div class="line">  transition: 500ms;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  margin: 0;</div><div class="line">  font-size: .9rem;</div><div class="line">  line-height: 1.5;</div><div class="line">  transition: .5s;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h3><p>如果你需要使用透明度，请使用<code>rgba</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  color: hsl(103, 54%, 43%);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  color: #5a3;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="绘制"><a href="#绘制" class="headerlink" title="绘制"></a>绘制</h3><p>如果资源文件可以轻易在css中绘制出来，就避免HTTP请求来加载</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div::before &#123;</div><div class="line">  content: url(white-circle.svg);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div::before &#123;</div><div class="line">  content: &quot;&quot;;</div><div class="line">  display: block;</div><div class="line">  width: 20px;</div><div class="line">  height: 20px;</div><div class="line">  border-radius: 50%;</div><div class="line">  background: #fff;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="Hacks"><a href="#Hacks" class="headerlink" title="Hacks"></a>Hacks</h3><p>尽量不要使用Hacks<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  // position: relative;</div><div class="line">  transform: translateZ(0);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  /* position: relative; */</div><div class="line">  will-change: transform;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;/2015/12/24/前端代码指南-一/&quot;&gt;前端代码指南(一)&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;/2015/12/25/前端代码指南-二/&quot;&gt;前端代码指南(二)&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;/2015/12/25/前端代码指南-三/&quot;&gt;前端代码指南(
-    
-    </summary>
-    
-      <category term="web前端" scheme="http://www.godgoods.com/categories/web%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="翻译" scheme="http://www.godgoods.com/tags/%E7%BF%BB%E8%AF%91/"/>
-    
-      <category term="代码风格" scheme="http://www.godgoods.com/tags/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC/"/>
-    
-      <category term="css" scheme="http://www.godgoods.com/tags/css/"/>
+      <category term="代码风格" scheme="http://www.godgoods.website/tags/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC/"/>
     
   </entry>
   
   <entry>
     <title>实现跨域</title>
-    <link href="http://www.godgoods.com/web%E5%89%8D%E7%AB%AF/%E5%AE%9E%E7%8E%B0%E8%B7%A8%E5%9F%9F/"/>
-    <id>http://www.godgoods.com/web前端/实现跨域/</id>
+    <link href="http://www.godgoods.website/web%E5%89%8D%E7%AB%AF/%E5%AE%9E%E7%8E%B0%E8%B7%A8%E5%9F%9F/"/>
+    <id>http://www.godgoods.website/web前端/实现跨域/</id>
     <published>2016-09-09T03:05:00.000Z</published>
     <updated>2017-05-12T06:39:10.000Z</updated>
     
@@ -738,10 +738,10 @@ $(&quot;#second&quot;).attr(&quot;selected&quot;,&quot;selected&quot;);
     
     </summary>
     
-      <category term="web前端" scheme="http://www.godgoods.com/categories/web%E5%89%8D%E7%AB%AF/"/>
+      <category term="web前端" scheme="http://www.godgoods.website/categories/web%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="javascript" scheme="http://www.godgoods.com/tags/javascript/"/>
+      <category term="javascript" scheme="http://www.godgoods.website/tags/javascript/"/>
     
   </entry>
   
