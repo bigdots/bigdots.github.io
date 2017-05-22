@@ -1,0 +1,838 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.proxy.ustclug.org/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="gulp 自动化" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="godgoods" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="简单易用 高效构建 高质量的生态圈  可能很多人会说现在提gulp也太落后了吧，但我想说写点东西并不是为了讨论它是否过时，而是来帮助我们自己来记忆、整理和学习。任何工具，我需要，我才去使用它，正如此时我需要gulp一样。  为了效率而使用工具  安装 全局安装 gulp命令：  1$ npm install --global gulp-cli  作为项目的开发依赖（devDependencie）">
+<meta name="keywords" content="gulp 自动化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用gulp构建自动化工作流">
+<meta property="og:url" content="http://www.godgoods.website/web前端/使用gulp构建自动化工作流/index.html">
+<meta property="og:site_name" content="godgoods">
+<meta property="og:description" content="简单易用 高效构建 高质量的生态圈  可能很多人会说现在提gulp也太落后了吧，但我想说写点东西并不是为了讨论它是否过时，而是来帮助我们自己来记忆、整理和学习。任何工具，我需要，我才去使用它，正如此时我需要gulp一样。  为了效率而使用工具  安装 全局安装 gulp命令：  1$ npm install --global gulp-cli  作为项目的开发依赖（devDependencie）">
+<meta property="og:updated_time" content="2017-05-22T05:27:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用gulp构建自动化工作流">
+<meta name="twitter:description" content="简单易用 高效构建 高质量的生态圈  可能很多人会说现在提gulp也太落后了吧，但我想说写点东西并不是为了讨论它是否过时，而是来帮助我们自己来记忆、整理和学习。任何工具，我需要，我才去使用它，正如此时我需要gulp一样。  为了效率而使用工具  安装 全局安装 gulp命令：  1$ npm install --global gulp-cli  作为项目的开发依赖（devDependencie）">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.godgoods.website/web前端/使用gulp构建自动化工作流/"/>
+
+
+
+
+
+  <title>使用gulp构建自动化工作流 | godgoods</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-98870712-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c69bb20c4001011982cb2bde190307e4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">godgoods</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Sean's 个人站</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-feed">
+          <a href="/atom.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-rss"></i> <br />
+            
+            RSS
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.godgoods.website/web前端/使用gulp构建自动化工作流/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="godgoods">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">使用gulp构建自动化工作流</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-10T13:56:31+08:00">
+                2017-01-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                    <span itemprop="name">web前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>简单易用</li>
+<li>高效构建</li>
+<li>高质量的生态圈</li>
+</ul>
+<p>可能很多人会说现在提gulp也太落后了吧，但我想说写点东西并不是为了讨论它是否过时，而是来帮助我们自己来记忆、整理和学习。任何工具，我需要，我才去使用它，正如此时我需要gulp一样。</p>
+<blockquote>
+<p>为了效率而使用工具</p>
+</blockquote>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
+<li>全局安装 gulp命令：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --global gulp-cli</div></pre></td></tr></table></figure>
+<ul>
+<li>作为项目的开发依赖（devDependencie）安装：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save-dev gulp</div></pre></td></tr></table></figure>
+<h2 id="创建配置文件"><a href="#创建配置文件" class="headerlink" title="创建配置文件"></a>创建配置文件</h2><p>在项目根目录下创建一个名为 gulpfile.js 的文件:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">touch gulpfile.js</div></pre></td></tr></table></figure>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><ul>
+<li><p>gulp.src(globs[, options])</p>
+<p>  读取目标源文件</p>
+</li>
+<li><p>gulp.dest(path[, options])</p>
+<p>  向目标路径输出结果</p>
+</li>
+<li><p>gulp.pipe()</p>
+<p>  将目标文件通过插件处理</p>
+</li>
+<li><p>gulp.watch(glob [, opts], tasks) 或 gulp.watch(glob [, opts, cb])</p>
+<p>  监视文件系统，并且可以在文件发生改动时候做一些事情</p>
+</li>
+<li><p>gulp.task(name[, deps], fn): 任务</p>
+<p>  定义一个gulp任务</p>
+</li>
+</ul>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>当配置完gulp.file后运行 gulp：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ gulp</div></pre></td></tr></table></figure>
+<h2 id="常用工具插件"><a href="#常用工具插件" class="headerlink" title="常用工具插件"></a>常用工具插件</h2><ul>
+<li><p><a href="https://github.com/dlmanning/gulp-sass" target="_blank" rel="external">gulp-sass</a></p>
+<p>  sass/scss编译</p>
+</li>
+<li><p><a href="https://github.com/adametry/gulp-eslint" target="_blank" rel="external">gulp-eslint</a></p>
+<p>  js代码校对</p>
+</li>
+<li><p><a href="https://github.com/twolfson/gulp.spritesmith" target="_blank" rel="external">gulp.spritesmith</a></p>
+<p>  生成sprite雪碧图</p>
+</li>
+<li><p><a href="https://github.com/AveVlad/gulp-connect" target="_blank" rel="external">gulp-connect</a></p>
+<p>  本地起一个websocket服务，实时刷新浏览器</p>
+</li>
+<li><p><a href="https://github.com/sindresorhus/gulp-changed" target="_blank" rel="external">gulp-changed</a></p>
+<ol>
+<li>不浪费宝贵的时间处理没有改动的文件.<code>gulp-changed</code>会首先把文件进行比对，如果文件没有改动，则跳过后续任务，。</li>
+<li>默认情况下，gulp只能检测流中的文件是否更改。<code>gulp-changed</code>的对比功能更加强大，比如可以知道导入/依赖的文件是否更改。</li>
+</ol>
+</li>
+<li><p><a href="https://github.com/chimurai/http-proxy-middleware" target="_blank" rel="external">http-proxy-middleware</a><br> 路由代理中间件</p>
+</li>
+</ul>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>以下是我的gulp文件，仅供交流。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&apos;use strict&apos;;</div><div class="line">const gulp = require(&quot;gulp&quot;);</div><div class="line"></div><div class="line">/**</div><div class="line"> * [sass sass/scss编译]</div><div class="line"> */</div><div class="line">const sass = require(&quot;gulp-sass&quot;);</div><div class="line"></div><div class="line">/**</div><div class="line"> * [eslint js代码检测]</div><div class="line"> */</div><div class="line">const eslint = require(&apos;gulp-eslint&apos;);</div><div class="line"></div><div class="line">/**</div><div class="line"> * [connect 本地起一个websocket服务，实时刷新浏览器]</div><div class="line"> */</div><div class="line">const connect = require(&apos;gulp-connect&apos;);</div><div class="line"></div><div class="line">/**</div><div class="line"> * [changed 比较文件变动]</div><div class="line"> * 默认情况下，gulp只能检测流中的文件是否更改。</div><div class="line"> * 如果您需要更高级的东西，比如知道导入/依赖的文件是否更改，则可以使用该插件。</div><div class="line"> */</div><div class="line">const changed = require(&apos;gulp-changed&apos;);</div><div class="line"></div><div class="line">/**</div><div class="line"> * [spritesmith 合并成雪碧图]</div><div class="line"> */</div><div class="line">const spritesmith= (&quot;gulp.spritesmith&quot;);</div><div class="line"></div><div class="line">/**</div><div class="line"> * [proxy 中间代理件]</div><div class="line"> */</div><div class="line">const proxy = require(&apos;http-proxy-middleware&apos;);</div><div class="line"></div><div class="line">let Pathconfig = &#123;</div><div class="line">    sassCompilePath: __dirname + &quot;/scss/**/*.scss&quot;, //需要编译的scss文件路径</div><div class="line">    sassDestPath: __dirname + &quot;/css/&quot;,  //编译后的scss文件存放处</div><div class="line">    htmlSrcPath: __dirname + &quot;/html/*.html&quot;, //监控的html路径</div><div class="line">    jsSrcPath: __dirname + &quot;/js/*.js&quot;,  //监控的js文件路径</div><div class="line">&#125;</div><div class="line"></div><div class="line">// html任务</div><div class="line">gulp.task(&quot;html&quot;,function()&#123;</div><div class="line">    gulp.src(Pathconfig.htmlSrcPath)</div><div class="line">    .pipe(connect.reload());</div><div class="line">&#125;)</div><div class="line"></div><div class="line">// 样式任务</div><div class="line">gulp.task(&quot;stylus&quot;,function()&#123;</div><div class="line">    gulp.src(Pathconfig.sassCompilePath)</div><div class="line">        .pipe(changed(Pathconfig.sassDestPath))</div><div class="line">        .pipe(sass())</div><div class="line">        .pipe(gulp.dest(Pathconfig.sassDestPath))</div><div class="line">        .pipe(connect.reload());</div><div class="line">&#125;)</div><div class="line"></div><div class="line">// js任务</div><div class="line">gulp.task(&quot;js&quot;,function()&#123;</div><div class="line">    gulp.src([Pathconfig.jsSrcPath,&apos;!node_modules/**&apos;])</div><div class="line">        .pipe(eslint())</div><div class="line">        .pipe(eslint.formatEach(&apos;compact&apos;, process.stderr))</div><div class="line">        .pipe(connect.reload());</div><div class="line">&#125;)</div><div class="line"></div><div class="line">// 监控变动</div><div class="line">gulp.task(&quot;watch&quot;,function()&#123;</div><div class="line">    gulp.watch([Pathconfig.htmlSrcPath], [&apos;html&apos;]);</div><div class="line">    gulp.watch([Pathconfig.sassCompilePath], [&apos;stylus&apos;]);</div><div class="line">    gulp.watch([Pathconfig.jsSrcPath], [&apos;js&apos;]);</div><div class="line">&#125;)</div><div class="line"></div><div class="line">//定义livereload任务，起一个本地服务</div><div class="line">gulp.task(&apos;connect&apos;,function () &#123;</div><div class="line">    connect.server(&#123;</div><div class="line">        root: __dirname,</div><div class="line">        port: 8000,</div><div class="line">        livereload: true</div><div class="line">    &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"></div><div class="line">gulp.task(&quot;default&quot;,[&apos;connect&apos;,&apos;watch&apos;])</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/工具/" rel="tag"># 工具</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/web前端/redux初识/" rel="next" title="redux 初识">
+                <i class="fa fa-chevron-left"></i> redux 初识
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/web前端/ESLint--定制你的代码规则/" rel="prev" title="ESLint--定制你的代码规则">
+                ESLint--定制你的代码规则 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Sean" />
+          <p class="site-author-name" itemprop="name">Sean</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/bigdots" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建配置文件"><span class="nav-number">2.</span> <span class="nav-text">创建配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API"><span class="nav-number">3.</span> <span class="nav-text">API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">4.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用工具插件"><span class="nav-number">5.</span> <span class="nav-text">常用工具插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">6.</span> <span class="nav-text">示例</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sean</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
