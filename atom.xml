@@ -678,6 +678,117 @@
   </entry>
   
   <entry>
+    <title>前端代码指南(一) —— HTML</title>
+    <link href="http://www.godgoods.website/p/%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E6%8C%87%E5%8D%97-%E4%B8%80.html"/>
+    <id>http://www.godgoods.website/p/前端代码指南-一.html</id>
+    <published>2016-09-09T03:05:00.000Z</published>
+    <updated>2017-05-12T06:23:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文翻译自bendc的<a href="https://github.com/bendc/frontend-guidelines?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io" target="_blank" rel="external">《Frontend Guidelines》</a>，由于篇幅过长，这里我分成了三篇，分别为HTML、CSS、Javascript，主要介绍了HTML/CSS/Javascript的代码指南，文章中所提出的指南也并不绝对，一切从实际出发，大家可以根据自己所需来取舍。说实话，英语真的不好,请见谅，欢迎大家纠错，Thanks。</p>
+<p><a href="/2015/12/24/前端代码指南-一/">前端代码指南(一)</a><br><a href="/2015/12/25/前端代码指南-二/">前端代码指南(二)</a><br><a href="/2015/12/25/前端代码指南-三/">前端代码指南(三)</a></p>
+<h3 id="语义化"><a href="#语义化" class="headerlink" title="语义化"></a>语义化</h3><p>HTML5为我们提供了大量的语义化标签使我们可以准确地描述内容，所以请使用这些语义化标签。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 糟糕的 --&gt;</div><div class="line">&lt;div id=&quot;main&quot;&gt;</div><div class="line">  &lt;div class=&quot;article&quot;&gt;</div><div class="line">    &lt;div class=&quot;header&quot;&gt;</div><div class="line">      &lt;h1&gt;Blog post&lt;/h1&gt;</div><div class="line">      &lt;p&gt;Published: &lt;span&gt;21st Feb, 2015&lt;/span&gt;&lt;/p&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;p&gt;…&lt;/p&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;!-- 推荐的--&gt;</div><div class="line">&lt;main&gt;</div><div class="line">  &lt;article&gt;</div><div class="line">    &lt;header&gt;</div><div class="line">      &lt;h1&gt;Blog post&lt;/h1&gt;</div><div class="line">      &lt;p&gt;Published: &lt;time datetime=&quot;2015-02-21&quot;&gt;21st Feb, 2015&lt;/time&gt;&lt;/p&gt;</div><div class="line">    &lt;/header&gt;</div><div class="line">    &lt;p&gt;…&lt;/p&gt;</div><div class="line">  &lt;/article&gt;</div><div class="line">&lt;/main&gt;</div></pre></td></tr></table></figure>
+<p>但是请确保你了解你使用的语义化标签。如果错误地使用语义化标签还不如不用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 糟糕的 --&gt;</div><div class="line">&lt;h1&gt;</div><div class="line">  &lt;figure&gt;</div><div class="line">    &lt;img alt=Company src=logo.png&gt;</div><div class="line">  &lt;/figure&gt;</div><div class="line">&lt;/h1&gt;</div><div class="line"></div><div class="line">&lt;!-- 推荐的 --&gt;</div><div class="line">&lt;h1&gt;</div><div class="line">  &lt;img alt=Company src=logo.png&gt;</div><div class="line">&lt;/h1&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="简洁"><a href="#简洁" class="headerlink" title="简洁"></a>简洁</h3><p>保持代码简洁，忘记你XHTML的旧习惯。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 糟糕的 --&gt;</div><div class="line">&lt;!doctype html&gt;</div><div class="line">&lt;html lang=en&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;meta http-equiv=Content-Type content=&quot;text/html; charset=utf-8&quot; /&gt;</div><div class="line">    &lt;title&gt;Contact&lt;/title&gt;</div><div class="line">    &lt;link rel=stylesheet href=style.css type=text/css /&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;h1&gt;Contact me&lt;/h1&gt;</div><div class="line">    &lt;label&gt;</div><div class="line">      Email address:</div><div class="line">      &lt;input type=email placeholder=you@email.com required=required /&gt;</div><div class="line">    &lt;/label&gt;</div><div class="line">    &lt;script src=main.js type=text/javascript&gt;&lt;/script&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div><div class="line"></div><div class="line">&lt;!-- 推荐的 --&gt;</div><div class="line">&lt;!doctype html&gt;</div><div class="line">&lt;html lang=en&gt;</div><div class="line">  &lt;meta charset=utf-8&gt;</div><div class="line">  &lt;title&gt;Contact&lt;/title&gt;</div><div class="line">  &lt;link rel=stylesheet href=style.css&gt;</div><div class="line"></div><div class="line">  &lt;h1&gt;Contact me&lt;/h1&gt;</div><div class="line">  &lt;label&gt;</div><div class="line">    Email address:</div><div class="line">    &lt;input type=email placeholder=you@email.com required&gt;</div><div class="line">  &lt;/label&gt;</div><div class="line">  &lt;script src=main.js&gt;&lt;/script&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="可访问性"><a href="#可访问性" class="headerlink" title="可访问性"></a>可访问性</h3><p>可访问性不是事后才解决的。你不需要成为一个WCAG专家才能提高你网站的可访问性,你可以通过修复一些小细节来实现,比如：</p>
+<ul>
+<li>学会正确使用alt属性;</li>
+<li>确保标记你的超链接和按钮(即让别人看到就明白那个地方是超链接或按钮)</li>
+<li>不要仅使用色彩来传达意思(主要考虑视力障碍者)</li>
+<li>显式地标记(label)字段(使用label标签)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 糟糕的 --&gt;</div><div class="line">&lt;h1&gt;&lt;img alt=&quot;Logo&quot; src=&quot;logo.png&quot;&gt;&lt;/h1&gt;</div><div class="line"></div><div class="line">&lt;!-- 推荐的 --&gt;</div><div class="line">&lt;h1&gt;&lt;img alt=&quot;My Company, Inc.&quot; src=&quot;logo.png&quot;&gt;&lt;/h1&gt;</div></pre></td></tr></table></figure>
+<h3 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h3><p>虽然声明语言和字符编码是可选的,但是强烈建议在文档内声明(即使他们已经在HTTP头内指定)。编码格式建议优先考虑utf-8。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 糟糕的 --&gt;</div><div class="line">&lt;!doctype html&gt;</div><div class="line">&lt;title&gt;Hello, world.&lt;/title&gt;</div><div class="line"></div><div class="line">&lt;!-- 推荐的 --&gt;</div><div class="line">&lt;!doctype html&gt;</div><div class="line">&lt;html lang=en&gt;</div><div class="line">  &lt;meta charset=utf-8&gt;</div><div class="line">  &lt;title&gt;Hello, world.&lt;/title&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h3><p>除非某个脚本必须在内容之前加载,否则不要让js阻止页面的呈现。如果你的css文件很大，请将这个css文件分离为俩个css文件(<code>需要首先加载的</code>和<code>可延迟加载的</code>)。俩个http请求虽然比一个慢得多，但是”感官上的速度”才是最重要的因素。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 糟糕的 --&gt;</div><div class="line">&lt;!doctype html&gt;</div><div class="line">&lt;meta charset=utf-8&gt;</div><div class="line">&lt;script src=analytics.js&gt;&lt;/script&gt;</div><div class="line">&lt;title&gt;Hello, world.&lt;/title&gt;</div><div class="line">&lt;p&gt;...&lt;/p&gt;</div><div class="line"></div><div class="line">&lt;!-- 推荐的 --&gt;</div><div class="line">&lt;!doctype html&gt;</div><div class="line">&lt;meta charset=utf-8&gt;</div><div class="line">&lt;title&gt;Hello, world.&lt;/title&gt;</div><div class="line">&lt;p&gt;...&lt;/p&gt;</div><div class="line">&lt;script src=analytics.js&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文翻译自bendc的&lt;a href=&quot;https://github.com/bendc/frontend-guidelines?hmsr=toutiao.io&amp;amp;utm_medium=toutiao.io&amp;amp;utm_source=toutiao.io&quot; tar
+    
+    </summary>
+    
+      <category term="web前端" scheme="http://www.godgoods.website/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="翻译" scheme="http://www.godgoods.website/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="代码风格" scheme="http://www.godgoods.website/tags/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC/"/>
+    
+      <category term="HTML" scheme="http://www.godgoods.website/tags/HTML/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>了解闭包</title>
+    <link href="http://www.godgoods.website/p/%E4%BA%86%E8%A7%A3%E9%97%AD%E5%8C%85.html"/>
+    <id>http://www.godgoods.website/p/了解闭包.html</id>
+    <published>2016-09-09T03:05:00.000Z</published>
+    <updated>2017-05-12T06:14:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>江湖上都说要了解闭包，得先了解作用域链，所以，先从作用域链开始吧。</p>
+<h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h2><ol>
+<li>作用域链是一个对象列表或链表，这组对象定义了这段代码“作用域”中的变量；</li>
+<li>每当调用一个函数，这个函数会创建一个新的对象来储存它的变量（变量绑定对象），并且将这个对象添加到作用域链上；当函数返回时，就从作用域链中将这个对象删除；</li>
+<li>当javascript需要查找一个变量时，它会沿着作用域链一级一级地搜索变量。搜索过程始终从作用域链的前端开始，然后逐级地向后回溯，直至作用域链的最顶层（全局对象）为止。</li>
+<li>对于嵌套函数，每个嵌套的函数都各自对应一个作用域链，并且这个作用域链都指向一个变量绑定对象</li>
+</ol>
+<p><strong>我们来看一个栗子</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var word = &quot; the window&quot;</div><div class="line">function sayWord()&#123;</div><div class="line">	var word = &quot;sayWord&quot;</div><div class="line">	 function sayHello()&#123;</div><div class="line">		var word = &quot;sayHello&quot;</div><div class="line">		alert(word)</div><div class="line">	&#125;</div><div class="line">	return sayHello</div><div class="line">&#125;</div><div class="line">sayWord()();</div></pre></td></tr></table></figure>
+<p>上例的作用域链就是：<br><code>sayHello[word=&quot;sayHello&quot;]</code>——<code>sayWord[word=&quot;sayWord&quot;]</code>——<code>window[word=&quot;the window&quot;];</code><br>当执行sayHello函数时，会沿着这个作用域链一级一级往上找word这个变量，直到找到为止。</p>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>javacript高级程序设计上说“有不少开发人员总是搞不清匿名函数和闭包这两个概念”。很遗憾，本人就是。</p>
+<p><a href="javascript:void(0" target="_blank" rel="external">@javacript高级程序设计</a></p>
+<blockquote>
+<p>闭包是指有权访问另一个函数作用域中的变量的函数。</p>
+</blockquote>
+<p><a href="http://www.cnblogs.com/xiaotie/archive/2011/08/03/2126145.html" target="_blank" rel="external">@xiaotie</a></p>
+<blockquote>
+<p>闭包是从用户角度考虑的一种设计概念，它基于对上下文的分析，把龌龊的事情、复杂的事情和外部环境交互的事情都自己做了，留给用户一个很自然的接口。</p>
+</blockquote>
+<p><a href="javascript:void(0" target="_blank" rel="external">@javacript权威指南</a></p>
+<blockquote>
+<p>函数对象通过作用域链相互关联起来，函数体内部的变量都可以保存在函数作用域内</p>
+</blockquote>
+<hr>
+<p>上栗子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var word = &quot; the window&quot;</div><div class="line">function sayWord()&#123;</div><div class="line">	var word = &quot;sayWord&quot;</div><div class="line">	 function sayHello()&#123;</div><div class="line">		alert(word)</div><div class="line">	&#125;</div><div class="line">	return sayHello</div><div class="line">&#125;</div><div class="line">sayWord()();</div></pre></td></tr></table></figure>
+<p>sayHello函数在sayWord函数内部，它能访问sayWord函数内部的变量。sayHello函数就是闭包，</p>
+<h2 id="利用闭包实现私有属性"><a href="#利用闭包实现私有属性" class="headerlink" title="利用闭包实现私有属性"></a>利用闭包实现私有属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">function createCounter() &#123;</div><div class="line">  var counter = 0;</div><div class="line">  function increment() &#123;</div><div class="line">    counter = counter + 1;</div><div class="line">    console.log(&quot;Number of events: &quot; + counter);</div><div class="line">  &#125;</div><div class="line">  return increment;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var counter1 = createCounter();</div><div class="line">var counter2 = createCounter();</div><div class="line"></div><div class="line">counter1(); // Number of events: 1</div><div class="line">counter1(); // Number of events: 2</div><div class="line"></div><div class="line">counter2(); // Number of events: 1</div><div class="line"> </div><div class="line">counter1(); // Number of events: 3</div></pre></td></tr></table></figure>
+<p>每次调用函数都会创建变量绑定对象添加到作用域链中，所以每次调用外部函数的时候，作用域链都是不同的。而对于嵌套函数，每次调用外部函数时，内部函数又会重新定义一遍。</p>
+<h2 id="闭包存在的问题"><a href="#闭包存在的问题" class="headerlink" title="闭包存在的问题"></a>闭包存在的问题</h2><p><strong>this对象的指向问题</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var name = &quot;The Window&quot;;</div><div class="line">var object = &#123;</div><div class="line">	name : &quot;My Object&quot;,</div><div class="line">	getNameFunc : function()&#123;</div><div class="line">		var name = &quot;The v&quot;;</div><div class="line">		return function()&#123;</div><div class="line">			return this.name;</div><div class="line">		&#125;;</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line">alert(object.getNameFunc()()); //&quot;The Window&quot;（在非严格模式下）</div></pre></td></tr></table></figure>
+<p>每个函数在被调用时都会自动取得两个特殊变量：<code>this</code> 和<code>arguments</code>。内部函数在搜索这两个变量时，只会搜索到其活动对象为止，因此永远不可能直接访问外部函数中的这两个变量。</p>
+<p>这里</p>
+<blockquote>
+<p>object.getNameFunc()()==(function(){return this.name;})()</p>
+</blockquote>
+<p>所以其活动对象为window;</p>
+<p>解决办法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var name = &quot;The Window&quot;;</div><div class="line">var object = &#123;</div><div class="line">	name : &quot;My Object&quot;,</div><div class="line">	getNameFunc : function()&#123;</div><div class="line">		var that = this;</div><div class="line">		return function()&#123;</div><div class="line">			return that.name;</div><div class="line">		&#125;;</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line">alert(object.getNameFunc()()); //&quot;My Object&quot;</div></pre></td></tr></table></figure></p>
+<hr>
+<p><strong>内存泄露问题</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">function sayWord()&#123;</div><div class="line">	var word = &quot;hello&quot;</div><div class="line">	add = function()&#123;</div><div class="line">		word = word + &quot; world&quot;</div><div class="line">	&#125;</div><div class="line">	function sayHello()&#123;</div><div class="line">		alert(word)</div><div class="line">	&#125;</div><div class="line">	return sayHello;</div><div class="line">	word = null;</div><div class="line">&#125;</div><div class="line">var say = sayWord();</div><div class="line">say();  //hello</div><div class="line">add();</div><div class="line">say();	//hello world</div></pre></td></tr></table></figure></p>
+<ul>
+<li>首先调用say();结果输出hello</li>
+<li>然后调用add，add是个全局变量，所以可以在外部调用，因为它又是闭包，所以可以访问到变量word，所以world=“hello world”;</li>
+<li>最后再调用say()；发现结果输出hello world；<br>这说明函数sayWord中的局部变量word一直保存在内存中，并没有在sayWord调用后被自动清除。产生这个问题主要是由于匿名函数保存了一个对word的引用，所以它所占用的内存就永远不会被回收。</li>
+</ul>
+<p style="color:red">注意：因为闭包的这个特性，所以外部函数的变量是其内部所有闭包的共享值，因此，不能在闭包中随意的改变外部函数的变量值，牵一发而动全身。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;江湖上都说要了解闭包，得先了解作用域链，所以，先从作用域链开始吧。&lt;/p&gt;
+&lt;h2 id=&quot;作用域链&quot;&gt;&lt;a href=&quot;#作用域链&quot; class=&quot;headerlink&quot; title=&quot;作用域链&quot;&gt;&lt;/a&gt;作用域链&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;作用域链是一个对象列表或链表，
+    
+    </summary>
+    
+      <category term="web前端" scheme="http://www.godgoods.website/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="javascript" scheme="http://www.godgoods.website/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Jquery属性获取 —— attr()与prop()</title>
     <link href="http://www.godgoods.website/p/Jquery%E5%B1%9E%E6%80%A7%E8%8E%B7%E5%8F%96%E2%80%94%E2%80%94attr()%E4%B8%8Eprop().html"/>
     <id>http://www.godgoods.website/p/Jquery属性获取——attr()与prop().html</id>
@@ -755,64 +866,269 @@ $(&quot;#second&quot;).attr(&quot;selected&quot;,&quot;selected&quot;);
   </entry>
   
   <entry>
-    <title>了解闭包</title>
-    <link href="http://www.godgoods.website/p/%E4%BA%86%E8%A7%A3%E9%97%AD%E5%8C%85.html"/>
-    <id>http://www.godgoods.website/p/了解闭包.html</id>
+    <title>前端代码指南(二) —— CSS</title>
+    <link href="http://www.godgoods.website/p/%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E6%8C%87%E5%8D%97-%E4%BA%8C.html"/>
+    <id>http://www.godgoods.website/p/前端代码指南-二.html</id>
     <published>2016-09-09T03:05:00.000Z</published>
-    <updated>2017-05-12T06:14:15.000Z</updated>
+    <updated>2017-05-12T06:23:43.000Z</updated>
     
-    <content type="html"><![CDATA[<p>江湖上都说要了解闭包，得先了解作用域链，所以，先从作用域链开始吧。</p>
-<h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h2><ol>
-<li>作用域链是一个对象列表或链表，这组对象定义了这段代码“作用域”中的变量；</li>
-<li>每当调用一个函数，这个函数会创建一个新的对象来储存它的变量（变量绑定对象），并且将这个对象添加到作用域链上；当函数返回时，就从作用域链中将这个对象删除；</li>
-<li>当javascript需要查找一个变量时，它会沿着作用域链一级一级地搜索变量。搜索过程始终从作用域链的前端开始，然后逐级地向后回溯，直至作用域链的最顶层（全局对象）为止。</li>
-<li>对于嵌套函数，每个嵌套的函数都各自对应一个作用域链，并且这个作用域链都指向一个变量绑定对象</li>
-</ol>
-<p><strong>我们来看一个栗子</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var word = &quot; the window&quot;</div><div class="line">function sayWord()&#123;</div><div class="line">	var word = &quot;sayWord&quot;</div><div class="line">	 function sayHello()&#123;</div><div class="line">		var word = &quot;sayHello&quot;</div><div class="line">		alert(word)</div><div class="line">	&#125;</div><div class="line">	return sayHello</div><div class="line">&#125;</div><div class="line">sayWord()();</div></pre></td></tr></table></figure>
-<p>上例的作用域链就是：<br><code>sayHello[word=&quot;sayHello&quot;]</code>——<code>sayWord[word=&quot;sayWord&quot;]</code>——<code>window[word=&quot;the window&quot;];</code><br>当执行sayHello函数时，会沿着这个作用域链一级一级往上找word这个变量，直到找到为止。</p>
-<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>javacript高级程序设计上说“有不少开发人员总是搞不清匿名函数和闭包这两个概念”。很遗憾，本人就是。</p>
-<p><a href="javascript:void(0" target="_blank" rel="external">@javacript高级程序设计</a></p>
-<blockquote>
-<p>闭包是指有权访问另一个函数作用域中的变量的函数。</p>
-</blockquote>
-<p><a href="http://www.cnblogs.com/xiaotie/archive/2011/08/03/2126145.html" target="_blank" rel="external">@xiaotie</a></p>
-<blockquote>
-<p>闭包是从用户角度考虑的一种设计概念，它基于对上下文的分析，把龌龊的事情、复杂的事情和外部环境交互的事情都自己做了，留给用户一个很自然的接口。</p>
-</blockquote>
-<p><a href="javascript:void(0" target="_blank" rel="external">@javacript权威指南</a></p>
-<blockquote>
-<p>函数对象通过作用域链相互关联起来，函数体内部的变量都可以保存在函数作用域内</p>
-</blockquote>
-<hr>
-<p>上栗子</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var word = &quot; the window&quot;</div><div class="line">function sayWord()&#123;</div><div class="line">	var word = &quot;sayWord&quot;</div><div class="line">	 function sayHello()&#123;</div><div class="line">		alert(word)</div><div class="line">	&#125;</div><div class="line">	return sayHello</div><div class="line">&#125;</div><div class="line">sayWord()();</div></pre></td></tr></table></figure>
-<p>sayHello函数在sayWord函数内部，它能访问sayWord函数内部的变量。sayHello函数就是闭包，</p>
-<h2 id="利用闭包实现私有属性"><a href="#利用闭包实现私有属性" class="headerlink" title="利用闭包实现私有属性"></a>利用闭包实现私有属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">function createCounter() &#123;</div><div class="line">  var counter = 0;</div><div class="line">  function increment() &#123;</div><div class="line">    counter = counter + 1;</div><div class="line">    console.log(&quot;Number of events: &quot; + counter);</div><div class="line">  &#125;</div><div class="line">  return increment;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var counter1 = createCounter();</div><div class="line">var counter2 = createCounter();</div><div class="line"></div><div class="line">counter1(); // Number of events: 1</div><div class="line">counter1(); // Number of events: 2</div><div class="line"></div><div class="line">counter2(); // Number of events: 1</div><div class="line"> </div><div class="line">counter1(); // Number of events: 3</div></pre></td></tr></table></figure>
-<p>每次调用函数都会创建变量绑定对象添加到作用域链中，所以每次调用外部函数的时候，作用域链都是不同的。而对于嵌套函数，每次调用外部函数时，内部函数又会重新定义一遍。</p>
-<h2 id="闭包存在的问题"><a href="#闭包存在的问题" class="headerlink" title="闭包存在的问题"></a>闭包存在的问题</h2><p><strong>this对象的指向问题</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var name = &quot;The Window&quot;;</div><div class="line">var object = &#123;</div><div class="line">	name : &quot;My Object&quot;,</div><div class="line">	getNameFunc : function()&#123;</div><div class="line">		var name = &quot;The v&quot;;</div><div class="line">		return function()&#123;</div><div class="line">			return this.name;</div><div class="line">		&#125;;</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line">alert(object.getNameFunc()()); //&quot;The Window&quot;（在非严格模式下）</div></pre></td></tr></table></figure>
-<p>每个函数在被调用时都会自动取得两个特殊变量：<code>this</code> 和<code>arguments</code>。内部函数在搜索这两个变量时，只会搜索到其活动对象为止，因此永远不可能直接访问外部函数中的这两个变量。</p>
-<p>这里</p>
-<blockquote>
-<p>object.getNameFunc()()==(function(){return this.name;})()</p>
-</blockquote>
-<p>所以其活动对象为window;</p>
-<p>解决办法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var name = &quot;The Window&quot;;</div><div class="line">var object = &#123;</div><div class="line">	name : &quot;My Object&quot;,</div><div class="line">	getNameFunc : function()&#123;</div><div class="line">		var that = this;</div><div class="line">		return function()&#123;</div><div class="line">			return that.name;</div><div class="line">		&#125;;</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line">alert(object.getNameFunc()()); //&quot;My Object&quot;</div></pre></td></tr></table></figure></p>
-<hr>
-<p><strong>内存泄露问题</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">function sayWord()&#123;</div><div class="line">	var word = &quot;hello&quot;</div><div class="line">	add = function()&#123;</div><div class="line">		word = word + &quot; world&quot;</div><div class="line">	&#125;</div><div class="line">	function sayHello()&#123;</div><div class="line">		alert(word)</div><div class="line">	&#125;</div><div class="line">	return sayHello;</div><div class="line">	word = null;</div><div class="line">&#125;</div><div class="line">var say = sayWord();</div><div class="line">say();  //hello</div><div class="line">add();</div><div class="line">say();	//hello world</div></pre></td></tr></table></figure></p>
-<ul>
-<li>首先调用say();结果输出hello</li>
-<li>然后调用add，add是个全局变量，所以可以在外部调用，因为它又是闭包，所以可以访问到变量word，所以world=“hello world”;</li>
-<li>最后再调用say()；发现结果输出hello world；<br>这说明函数sayWord中的局部变量word一直保存在内存中，并没有在sayWord调用后被自动清除。产生这个问题主要是由于匿名函数保存了一个对word的引用，所以它所占用的内存就永远不会被回收。</li>
-</ul>
-<p style="color:red">注意：因为闭包的这个特性，所以外部函数的变量是其内部所有闭包的共享值，因此，不能在闭包中随意的改变外部函数的变量值，牵一发而动全身。</p>]]></content>
+    <content type="html"><![CDATA[<p><a href="/2015/12/24/前端代码指南-一/">前端代码指南(一)</a><br><a href="/2015/12/25/前端代码指南-二/">前端代码指南(二)</a><br><a href="/2015/12/25/前端代码指南-三/">前端代码指南(三)</a></p>
+<h3 id="分号"><a href="#分号" class="headerlink" title="分号"></a>分号</h3><p>分号是CSS语句的分离器,请把它放在句尾。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  color: red</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  color: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h3><p>最理想的情况是盒模型在整个文档是一样的。全局设置* { box-sizing:border-box;}是可以的,但最好不要在特定的元素上改变默认的盒模型。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  width: 100%;</div><div class="line">  padding: 10px;</div><div class="line">  box-sizing: border-box;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  padding: 10px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="文档流"><a href="#文档流" class="headerlink" title="文档流"></a>文档流</h3><p> 不要改变一个元素的默认样式，尽可能保持元素在自然的文档流中。例如,删除图像下面的空白不应该改变其默认显示:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">img &#123;</div><div class="line">  display: block;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">img &#123;</div><div class="line">  vertical-align: middle;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>同样的，尽可能不要使元素脱离文档流<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  width: 100px;</div><div class="line">  position: absolute;</div><div class="line">  right: 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  width: 100px;</div><div class="line">  margin-left: auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><p>css有很多方法来定位元素,但是最好不要使用下面的属性/值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">display: block;</div><div class="line">display: flex;</div><div class="line">position: relative;</div><div class="line">position: sticky;</div><div class="line">position: absolute;</div><div class="line">position: fixed;</div></pre></td></tr></table></figure></p>
+<h3 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h3><p>减少选择器与DOM的耦合度。当你的选择器匹配的元素超过3层结构(伪类、后代或兄弟元素)。考虑添加一个类来匹配你想要的元素吧<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div:first-of-type :last-child &gt; p ~ *</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div:first-of-type .info</div></pre></td></tr></table></figure></p>
+<p>避免过载你的选择器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">img[src$=svg], ul &gt; li:first-child &#123;</div><div class="line">  opacity: 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">[src$=svg], ul &gt; :first-child &#123;</div><div class="line">  opacity: 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><p>不要让属性值和选择器难以被覆盖(应该是指优先级不要过高)，减少使用id和!important的使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">.bar &#123;</div><div class="line">  color: green !important;</div><div class="line">&#125;</div><div class="line">.foo &#123;</div><div class="line">  color: red;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">.foo.bar &#123;</div><div class="line">  color: green;</div><div class="line">&#125;</div><div class="line">.foo &#123;</div><div class="line">  color: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="覆盖"><a href="#覆盖" class="headerlink" title="覆盖"></a>覆盖</h3><p>覆盖样式会导致选择器和调试变得困难，请尽量避免<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">li &#123;</div><div class="line">  visibility: hidden;</div><div class="line">&#125;</div><div class="line">li:first-child &#123;</div><div class="line">  visibility: visible;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">li + li &#123;</div><div class="line">  visibility: hidden;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>不要重复书写可以继承的样式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div h1, div p &#123;</div><div class="line">  text-shadow: 0 1px 0 #fff;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  text-shadow: 0 1px 0 #fff;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="简洁"><a href="#简洁" class="headerlink" title="简洁"></a>简洁</h3><p>保持你的代码简洁，尽量使用简写属性,避免使用多个属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  transition: all 1s;</div><div class="line">  top: 50%;</div><div class="line">  margin-top: -10px;</div><div class="line">  padding-top: 5px;</div><div class="line">  padding-right: 10px;</div><div class="line">  padding-bottom: 20px;</div><div class="line">  padding-left: 10px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  transition: 1s;</div><div class="line">  top: calc(50% - 10px);</div><div class="line">  padding: 5px 10px 20px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h3><p>英文优于数学表达式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">:nth-child(2n + 1) &#123;</div><div class="line">  transform: rotate(360deg);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">:nth-child(odd) &#123;</div><div class="line">  transform: rotate(1turn);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="前缀"><a href="#前缀" class="headerlink" title="前缀"></a>前缀</h3><p>积极删除过时的前缀。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  transform: scale(2);</div><div class="line">  -webkit-transform: scale(2);</div><div class="line">  -moz-transform: scale(2);</div><div class="line">  -ms-transform: scale(2);</div><div class="line">  transition: 1s;</div><div class="line">  -webkit-transition: 1s;</div><div class="line">  -moz-transition: 1s;</div><div class="line">  -ms-transition: 1s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  -webkit-transform: scale(2);</div><div class="line">  transform: scale(2);</div><div class="line">  transition: 1s;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h3><p><code>animations</code>和<code>transitions</code> ，优先选择<code>transitions</code> 。除了 <code>opacity</code> 和 <code>transform</code>属性，其他属性避免使用<code>animations</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div:hover &#123;</div><div class="line">  animation: move 1s forwards;</div><div class="line">&#125;</div><div class="line">@keyframes move &#123;</div><div class="line">  100% &#123;</div><div class="line">    margin-left: 100px;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div:hover &#123;</div><div class="line">  transition: 1s;</div><div class="line">  transform: translateX(100px);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="单位"><a href="#单位" class="headerlink" title="单位"></a>单位</h3><p>不要对不需要使用单位的值使用单位；如果你要使用相对单位最好使用<code>rem</code>；使用秒而不是毫秒<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  margin: 0px;</div><div class="line">  font-size: .9em;</div><div class="line">  line-height: 22px;</div><div class="line">  transition: 500ms;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  margin: 0;</div><div class="line">  font-size: .9rem;</div><div class="line">  line-height: 1.5;</div><div class="line">  transition: .5s;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h3><p>如果你需要使用透明度，请使用<code>rgba</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  color: hsl(103, 54%, 43%);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  color: #5a3;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="绘制"><a href="#绘制" class="headerlink" title="绘制"></a>绘制</h3><p>如果资源文件可以轻易在css中绘制出来，就避免HTTP请求来加载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div::before &#123;</div><div class="line">  content: url(white-circle.svg);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div::before &#123;</div><div class="line">  content: &quot;&quot;;</div><div class="line">  display: block;</div><div class="line">  width: 20px;</div><div class="line">  height: 20px;</div><div class="line">  border-radius: 50%;</div><div class="line">  background: #fff;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Hacks"><a href="#Hacks" class="headerlink" title="Hacks"></a>Hacks</h3><p>尽量不要使用Hacks<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  // position: relative;</div><div class="line">  transform: translateZ(0);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  /* position: relative; */</div><div class="line">  will-change: transform;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;江湖上都说要了解闭包，得先了解作用域链，所以，先从作用域链开始吧。&lt;/p&gt;
-&lt;h2 id=&quot;作用域链&quot;&gt;&lt;a href=&quot;#作用域链&quot; class=&quot;headerlink&quot; title=&quot;作用域链&quot;&gt;&lt;/a&gt;作用域链&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;作用域链是一个对象列表或链表，
+      &lt;p&gt;&lt;a href=&quot;/2015/12/24/前端代码指南-一/&quot;&gt;前端代码指南(一)&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;/2015/12/25/前端代码指南-二/&quot;&gt;前端代码指南(二)&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;/2015/12/25/前端代码指南-三/&quot;&gt;前端代码指南(
+    
+    </summary>
+    
+      <category term="web前端" scheme="http://www.godgoods.website/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="翻译" scheme="http://www.godgoods.website/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="代码风格" scheme="http://www.godgoods.website/tags/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC/"/>
+    
+      <category term="css" scheme="http://www.godgoods.website/tags/css/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>rem在响应式布局中的应用</title>
+    <link href="http://www.godgoods.website/p/rem%E5%9C%A8%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8.html"/>
+    <id>http://www.godgoods.website/p/rem在响应式布局中的应用.html</id>
+    <published>2016-09-09T03:05:00.000Z</published>
+    <updated>2017-05-12T06:42:10.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="rem-em-px-pt的基友关系"><a href="#rem-em-px-pt的基友关系" class="headerlink" title="rem/em/px/pt的基友关系"></a>rem/em/px/pt的基友关系</h2><p><strong>px</strong><br>像素相对长度单位,相对于显示器屏幕分辨率而言</p>
+<p><strong>em</strong><br>相对长度单位,根据其父元素来设置字体大小</p>
+<p><strong>pt</strong><br>point，是印刷行业常用单位，等于1/72英寸</p>
+<p><strong>rem</strong><br>CSS3新增的一个相对单位,是根据网页的跟元素（html）来设置字体大小</p>
+<h2 id="rem应用于适配"><a href="#rem应用于适配" class="headerlink" title="rem应用于适配"></a>rem应用于适配</h2><p>rem的特性同样适用于width和height，我们可以根据根元素的font-size值来改变元素的宽高值，由此我们应该可以联想到我们可以根据屏幕大小动态地给html设定不同的值，从而达到我们css样式中的适配效果。</p>
+<h2 id="rem的适配规则"><a href="#rem的适配规则" class="headerlink" title="rem的适配规则"></a>rem的适配规则</h2><p><strong>1.选择基准</strong><br>虽然我们所写出的页面要在不同的屏幕大小设备上运行，但是我们写页面的时候，必须要选择其中一种屏幕大小作为初始的基准，而这个基准的选择应该根据我们所拿到的视觉稿来决定，</p>
+<p><strong>2.rem数值计算</strong><br>正常情况下rem的值默认为16px，这样在整个页面的css计算过程中太过繁琐。比如，现在有个30px宽度的元素，就得写成30/16rem。对于整个页面来说工作量还是挺大的。所以这里提供了俩种方法</p>
+<ul>
+<li><p>可以将html的font-size设置成100px<br>这样设置，在写单位时直接将数值除以100在加上rem的单位就可以了。如果设计稿的字体是16px；我们就可以写成1.6rem。</p>
+<ul>
+<li><strong>这里为什么不用10？</strong><br>因为google等浏览器对最小字体有限制，即最小为12px，所以设置10px会有问题。</li>
+</ul>
+</li>
+<li><p>使用sass</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$rem : 16x;</div><div class="line">@function px_rem($px)&#123;</div><div class="line">    @return ($px/$rem) + rem;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>3.动态设置html的font-size</strong><br>随着屏幕大小的改变，html的font-size的值应该是<code>基准rem*改变后的屏幕宽度 / 基准屏幕宽度</code></p>
+<ul>
+<li><p>利用css的media query来设置（这种是一个宽度区间内是一个rem）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2)&#123;</div><div class="line">      $rem : 16x;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>利用javascript来动态设置（这种方法每一个宽度点都会有一个新的rem）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.getElementsByTagName(<span class="string">'html'</span>)[<span class="number">0</span>].style.fontSize = 基准rem*<span class="built_in">window</span>.innerWidth / 基准屏幕宽度 + <span class="string">'px'</span>;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="考虑dpr"><a href="#考虑dpr" class="headerlink" title="考虑dpr"></a>考虑dpr</h2><p>一般我们获取到的视觉稿大部分尺寸是双倍大小的，我们一般会自觉的将标注/2，但是当我们配合rem使用时，完全可以按照视觉稿上的尺寸来设置。</p>
+<ul>
+<li><p>设计给的稿子双倍的原因是iphone等高清屏手机的存在，高清屏的像素比(device pixel ratio)dpr比较大，所以显示的像素较为清晰。</p>
+</li>
+<li><p>一般手机的dpr是1，iphone4，iphone5这种高清屏是2，iphone6s plus这种高清屏是3，可以通过js的window.devicePixelRatio获取到当前设备的dpr，所以iphone6给的视觉稿大小是（*2）750×1334了。</p>
+</li>
+<li><p>拿到了dpr之后，我们就可以在viewport meta头里，取消让浏览器自动缩放页面，而自己去设置viewport的content</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meta.setAttribute(<span class="string">'content'</span>, <span class="string">'initial-scale='</span> + <span class="number">1</span>/dpr + <span class="string">', maximum-scale='</span> + <span class="number">1</span>/dpr + <span class="string">', minimum-scale='</span> + <span class="number">1</span>/dpr + <span class="string">', user-scalable=no'</span>);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这样我们就直接可以使用视觉稿上的尺寸了。</p>
+<p><a href="http://bigdots.github.io/blogSource/example/rem.html" target="_blank" rel="external">点击查看示例&gt;&gt;</a></p>
+<p>我的博客:<a href="http://bigdots.github.io" target="_blank" rel="external">http://bigdots.github.io</a>、<a href="http://www.cnblogs.com/yzg1/" target="_blank" rel="external">http://www.cnblogs.com/yzg1/</a></p>
+<p>如果觉得本文不错的话，帮忙点击下面的推荐哦,谢谢！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;rem-em-px-pt的基友关系&quot;&gt;&lt;a href=&quot;#rem-em-px-pt的基友关系&quot; class=&quot;headerlink&quot; title=&quot;rem/em/px/pt的基友关系&quot;&gt;&lt;/a&gt;rem/em/px/pt的基友关系&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;px
+    
+    </summary>
+    
+      <category term="web前端" scheme="http://www.godgoods.website/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="响应式开发" scheme="http://www.godgoods.website/tags/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>实现跨域的N种方法</title>
+    <link href="http://www.godgoods.website/p/%E5%AE%9E%E7%8E%B0%E8%B7%A8%E5%9F%9F.html"/>
+    <id>http://www.godgoods.website/p/实现跨域.html</id>
+    <published>2016-09-09T03:05:00.000Z</published>
+    <updated>2017-05-22T05:05:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="从域说起"><a href="#从域说起" class="headerlink" title="从域说起"></a>从域说起</h2><blockquote>
+<p>域： 域是WIN2K网络系统的安全性边界。我们知道一个计算机网最基本的单元就是“域”，这一点不是WIN2K所独有的，但活动目录可以贯穿一个或多个域。在独立的计算机上，域即指计算机本身，一个域可以分布在多个物理位置上，同时一个物理位置又可以划分不同网段为不同的域，每个域都有自己的安全策略以及它与其他域的信任关系。当多个域通过信任关系连接起来之后，活动目录可以被多个信任域域共享 </p>
+<p>域树：域树由多个域组成，这些域共享同一表结构和配置，形成一个连续的名字空间。树中的域通过信任关系连接起来，活动目录包含一个或多个域树。域树中的域是通过双向可传递信任关系连接在一起。由于这些信任关系是双向的而且是可传递的，因此在域树或树林中新创建的域可以立即与域树或树林中每个其他的域建立信任关系。这些信任关系允许单一登录过程，在域树或树林中的所有域上对用户进行身份验证，但这不一定意味着经过身份验证的用户在域树的所有域中都拥有相同的权利和权限。因为域是安全界限，所以必须在每个域的基础上为用户指派相应的权利和权限。</p>
+</blockquote>
+<p><b style="color:#d44950">域树中的域层次越深级别越低，一个“.”代表一个层次。</b><br>如域<code>zhidao.baidu.com</code>(百度知道)就比 <code>baidu.com</code>(百度)这个域级别低，因为它有两个层次关系，而<code>baidu.com</code>只有一个层次。</p>
+<h2 id="何为跨域"><a href="#何为跨域" class="headerlink" title="何为跨域"></a>何为跨域</h2><blockquote>
+<p>默认情况下，，XHR 对象只能访问与包含它的页面位于同一个域中的资源。这种安全策略可以预防某些恶意行为。但是，实现合理的跨域请求对开发某些浏览器应用程序也是至关重要的。</p>
+</blockquote>
+<p><b style="color:#d44950">只要协议、域名、端口有任何一个不同，都被当作是不同的域</b></p>
+<p>比如在<a href="http://www.a.com/a.js" target="_blank" rel="external">http://www.a.com/a.js</a> 页面向以下页面发送一个ajax请求，以下是其请求结果及说明</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">URL</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">是否允许通信</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="http://www.a.com/b.js" target="_blank" rel="external">http://www.a.com/b.js</a></td>
+<td style="text-align:center">同一域名下</td>
+<td style="text-align:center">允许</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://www.a.com:8000/a.js" target="_blank" rel="external">http://www.a.com:8000/a.js</a></td>
+<td style="text-align:center">同一域名，不同端口</td>
+<td style="text-align:center">不允许</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.a.com/b.js" target="_blank" rel="external">https://www.a.com/b.js</a></td>
+<td style="text-align:center">同一域名，不同协议</td>
+<td style="text-align:center">不允许</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://script.a.com/b.js" target="_blank" rel="external">http://script.a.com/b.js</a></td>
+<td style="text-align:center">主域相同，子域不同</td>
+<td style="text-align:center">不允许</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://a.com/b.js" target="_blank" rel="external">http://a.com/b.js</a></td>
+<td style="text-align:center">同一域名，不同二级域名</td>
+<td style="text-align:center">不允许</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://www.a.com/b.js" target="_blank" rel="external">http://www.a.com/b.js</a></td>
+<td style="text-align:center">不同域名</td>
+<td style="text-align:center">不允许</td>
+</tr>
+</tbody>
+</table>
+<p><b style="color:#d44950">对于端口和协议的不同，只能通过后台来解决。我们要解决的是域名不同的问题</b></p>
+<h2 id="如何跨域"><a href="#如何跨域" class="headerlink" title="如何跨域"></a>如何跨域</h2><p><strong>(一) CORS(Cross-Origin Resource Sharing，跨源资源共享)</strong></p>
+<blockquote>
+<p>1.CORS（Cross-Origin Resource Sharing，跨源资源共享）是W3C 的一个工作草案，定义了在必须访问跨源资源时，浏览器与服务器应该如何沟通。CORS 背后的基本思想，就是使用自定义的HTTP 头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功，还是应该失败。<br>2.实现此功能非常简单，只需由服务器发送一个响应标头即可。</p>
+</blockquote>
+<p>浏览器支持情况：</p>
+<ul>
+<li>IE 8+</li>
+<li>Firefox 3.5+</li>
+<li>Opera 12+</li>
+<li>Safari 4+</li>
+<li>Chrome 3+</li>
+</ul>
+<p>假设我们页面或者应用已在 <a href="http://www.a.com/" target="_blank" rel="external">http://www.a.com/</a> 上了，而我们打算从 <a href="http://www.b.com" target="_blank" rel="external">http://www.b.com</a> 请求提取数据。一般情况下，如果我们直接使用 AJAX 来请求将会失败，浏览器也会返回错误。<br>利用 CORS，<a href="http://www.b.com" target="_blank" rel="external">http://www.b.com</a> 只需添加一个标头，就可以允许来自 <a href="http://www.a.com" target="_blank" rel="external">http://www.a.com</a> 的请求。<br>下面是用php进行的设置，“*”号表示允许任何域向我们的服务端提交请求：</p>
+<pre><code>header{&quot;Access-Control-Allow-Origin: *&quot;}
+</code></pre><p>CORS的兼容性写法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">function createCORSRequest(method, url)&#123;</div><div class="line">	var xhr = new XMLHttpRequest();</div><div class="line">	//非IE浏览器</div><div class="line">	if (&quot;withCredentials&quot; in xhr)&#123;</div><div class="line">		xhr.open(method, url, true);</div><div class="line">	//IE浏览器</div><div class="line">	&#125; else if (typeof XDomainRequest != &quot;undefined&quot;)&#123;</div><div class="line">		vxhr = new XDomainRequest();</div><div class="line">		xhr.open(method, url);</div><div class="line">	&#125; else &#123;</div><div class="line">		xhr = null;</div><div class="line">	&#125;</div><div class="line">	return xhr;</div><div class="line">&#125;</div><div class="line">var request = createCORSRequest(&quot;get&quot;, &quot;http://www.somewhere-else.com/page/&quot;);</div><div class="line">if (request)&#123;</div><div class="line">	request.onload = function()&#123;</div><div class="line">		//对request.responseText 进行处理</div><div class="line">	&#125;;</div><div class="line">	request.send();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<p><strong>(二) JSONP(JSON with Padding 填充式JSON 或参数式JSON)</strong></p>
+<p>在js中，我们虽然不能直接用XMLHttpRequest请求不同域上的数据时，但是在页面上引入不同域上的js脚本文件却是可以的，jsonp正是利用这个特性来实现的</p>
+<p>JSONP由两部分组成：回调函数和数据。回调函数是当响应到来时应该在页面中调用的函数，而数据就是传入回调函数中的JSON数据。</p>
+<p>例如：</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    function dosomething(jsondata){
+        //处理获得的json数据
+    }
+&lt;/script&gt;
+&lt;script src=&quot;http://example.com/data.php?callback=dosomething&quot;&gt;&lt;/script&gt;
+</code></pre><ul>
+<li>首先第一个<code>script</code>便签定义了一个处理数据的函数;</li>
+<li>然后第二个<code>script</code>标签载入一个js文件，<a href="http://example.com/data.php" target="_blank" rel="external">http://example.com/data.php</a> 是数据所在地址，但是因为是当做js来引入的，所以<a href="http://example.com/data.php" target="_blank" rel="external">http://example.com/data.php</a> 返回的必须是一个能执行的js文件;</li>
+<li>最后js文件载入成功后会执行我们在url参数中指定的函数，并且会把我们需要的json数据作为参数传入。所以php应该是这样的<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">$callback = $_GET[&apos;callback&apos;];//得到回调函数名</div><div class="line">$data = array(&apos;a&apos;,&apos;b&apos;,&apos;c&apos;);//要返回的数据</div><div class="line">echo $callback.&apos;(&apos;.json_encode($data).&apos;)&apos;;//输出</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>最终，输出结果为：dosomething([‘a’,’b’,’c’]);<br>从上面可以看出jsonp是需要服务器端的页面进行相应的配合的。</p>
+<p>JSONP的优缺点<br>优点:</p>
+<ul>
+<li>它的兼容性更好，在更加古老的浏览器中都可以运行，不需要XMLHttpRequest或ActiveX的支持；</li>
+<li>能够直接访问响应文本，支持在浏览器与服务器之间双向通信</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>JSONP 是从其他域中加载代码执行。如果其他域不安全，很可能会在响应中夹带一些恶意代码，而此时除了完全放弃JSONP 调用之外，没有办法追究。因此在使用不是你自己运维的Web 服务时，一定得保证它安全可靠。</li>
+<li>它只支持GET请求而不支持POST等其它类型的HTTP请求；它只支持跨域HTTP请求这种情况，不能解决不同域的两个页面之间如何进行JavaScript调用的问题。</li>
+</ul>
+<hr>
+<p><strong>(三) window.name</strong></p>
+<p>window对象有个<code>name</code>属性，该属性有个特征：即在一个窗口(window)的生命周期内,窗口载入的所有的页面都是共享一个window.name的，每个页面对window.name都有读写的权限，window.name是持久存在一个窗口载入过的所有页面中的，并不会因新页面的载入而进行重置。</p>
+<p>这里有三个页面：</p>
+<p>a.com/app.html：应用页面。<br>a.com/proxy.html：代理文件，一般是一个没有任何内容的html文件，需要和应用页面在同一域下。<br>b.com/data.html：应用页面需要获取数据的页面，可称为数据页面。</p>
+<p>app.html</p>
+<pre><code>&lt;iframe src=&quot;b.com/data.html&quot; id=&quot;iframe&quot;&gt;&lt;/iframe&gt;
+&lt;script&gt;
+    var iframe = document.getElementById(&quot;iframe&quot;);
+    iframe.src = &quot;a.com/proxy.html&quot;;//这是一个与a.com/app.html同源的页面
+    iframe.onload = function(){
+        var data = iframe.contentWindow.name; //取到数据
+    }
+
+&lt;/script&gt;
+</code></pre><p>data.html</p>
+<pre><code>&lt;script&gt;
+    // 这里是要传输的数据，大小一般为2M，IE和firefox下可以大至32M左右
+    // 数据格式可以自定义，如json、字符串
+    window.name = &quot;数据&quot;
+&lt;/script&gt;
+</code></pre><p>iframe首先的地址是b.com/data.html，所以能取到<code>window.name</code>数据;<br>但是iframe现在跟app.html并不同源，app.html无法获取到数据，所以又将iframe的链接跳转至a.com/proxy.html这个代理页面，现在app.html跟iframe就同源了。</p>
+<p><b style="color:#d44950">注意：iframe由b.com/data.html跳转到a.com/proxy.html页面，<code>window.name</code>的value是不变的</b></p>
+<p>获取数据以后销毁这个iframe，释放内存；这也保证了安全（不被其他域frame js访问）</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    iframe.contentWindow.document.write(&apos;&apos;);
+    iframe.contentWindow.close();
+    document.body.removeChild(iframe);
+&lt;/script&gt;
+</code></pre><p><strong>(四) document.domain + iframe</strong></p>
+<p>对于主域相同而子域不同的例子，可以通过设置document.domain的办法来解决。<br>具体的做法是可以在<a href="http://www.a.com/a.html" target="_blank" rel="external">http://www.a.com/a.html</a> 和<a href="http://script.a.com/b.html" target="_blank" rel="external">http://script.a.com/b.html</a> 两个文件中分别设置<code>document.domain = &#39;a.com&#39;</code>，然后通过a.html文件中创建一个iframe，去控制iframe的contentDocument，这样两个js文件之间就可以“交互”了。<br><a href="http://www.a.com/a.html页面" target="_blank" rel="external">http://www.a.com/a.html页面</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;iframe src=&quot;http://script.a.com/b.html&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;</div><div class="line">&lt;script&gt;</div><div class="line">	document.domain = &apos;a.com&apos;;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p><a href="http://script.a.com/b.html页面" target="_blank" rel="external">http://script.a.com/b.html页面</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">	document.domain = &apos;a.com&apos;;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>这样俩个页面就可以通过js相互访问各种属性和对象了。<br><b style="color:#d44950"><br>document.domain的设置是有限制的，我们只能把document.domain设置成自身或更高一级的父域，且主域必须相同。例如：a.b.example.com 中某个文档的document.domain 可以设成a.b.example.com、b.example.com 、example.com中的任意一个，但是不可以设成 c.a.b.example.com,因为这是当前域的子域，也不可以设成baidu.com,因为主域已经不相同了。</b></p>
+<hr>
+<p><strong>(五) HTML5的window.postMessage</strong></p>
+<p>window.postMessage(message,targetOrigin) 方法是html5新引进的特性，可以使用它来向其它的window对象发送消息，无论这个window对象是属于同源或不同源，目前IE8+、FireFox、Chrome、Opera等浏览器都已经支持window.postMessage方法。<br>window.postMessage允许两个窗口/帧之间跨域发送数据消息。从本质上讲，window.postMessage是一个跨域的无服务器垫片的Ajax。</p>
+<p>用法：<br>otherWindow.postMessage(message, targetOrigin);</p>
+<ul>
+<li>otherWindow: 对接收信息页面的window的引用。可以是页面中iframe的contentWindow属性；window.+open的返回值；通过name或下标从window.frames取到的值。</li>
+<li>message: 所要发送的数据，string类型。</li>
+<li>targetOrigin: 用于限制otherWindow，“*”表示不作限制</li>
+</ul>
+<p>数据发送端<br>a.com/index.html中的代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;iframe id=&quot;ifr&quot; src=&quot;b.com/index.html&quot;&gt;&lt;/iframe&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">window.onload = function() &#123;</div><div class="line">    var ifr = document.getElementById(&apos;ifr&apos;);</div><div class="line">    var targetOrigin = &apos;http://b.com&apos;;  // 若写成&apos;http://b.com/c/proxy.html&apos;效果一样</div><div class="line">                                        // 若写成&apos;http://c.com&apos;就不会执行postMessage了</div><div class="line">    ifr.contentWindow.postMessage(&apos;I was there!&apos;, targetOrigin);</div><div class="line">&#125;;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>数据接收端<br>b.com/index.html中的代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">    window.addEventListener(&apos;message&apos;, function(event)&#123;</div><div class="line">        // 通过origin属性判断消息来源地址</div><div class="line">        if (event.origin == &apos;http://a.com&apos;) &#123;</div><div class="line">            alert(event.data);    // 弹出&quot;I was there!&quot;</div><div class="line">            alert(event.source);  // 对a.com、index.html中window对象的引用</div><div class="line">                                  // 但由于同源策略，这里event.source不可以访问window对象</div><div class="line">        &#125;</div><div class="line">    &#125;, false);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>参考文章：<a href="http://www.cnblogs.com/rainman/archive/2011/02/20/1959325.html" target="_blank" rel="external">JavaScript跨域总结与解决办法</a>、<a href="http://www.cnblogs.com/2050/p/3191744.html#3322244" target="_blank" rel="external">js中几种实用的跨域方法原理详解</a></p>
+<p>脑细胞已经阵亡( ⊙ o ⊙ )</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;从域说起&quot;&gt;&lt;a href=&quot;#从域说起&quot; class=&quot;headerlink&quot; title=&quot;从域说起&quot;&gt;&lt;/a&gt;从域说起&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;域： 域是WIN2K网络系统的安全性边界。我们知道一个计算机网最基本的单元就是“域”，这一点不是W
     
     </summary>
     
@@ -820,6 +1136,64 @@ $(&quot;#second&quot;).attr(&quot;selected&quot;,&quot;selected&quot;);
     
     
       <category term="javascript" scheme="http://www.godgoods.website/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>前端代码指南(三) —— javascript</title>
+    <link href="http://www.godgoods.website/p/%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E6%8C%87%E5%8D%97-%E4%B8%89.html"/>
+    <id>http://www.godgoods.website/p/前端代码指南-三.html</id>
+    <published>2016-09-09T03:05:00.000Z</published>
+    <updated>2017-05-12T06:23:38.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="/2015/12/24/前端代码指南-一/">前端代码指南(一)</a><br><a href="/2015/12/25/前端代码指南-二/">前端代码指南(二)</a><br><a href="/2015/12/25/前端代码指南-三/">前端代码指南(三)</a></p>
+<p><b style="color:#d44950">注：</b> 下面ES6的语法</p>
+<h3 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h3><p>性能中最重要的是可读性、正确性和可表达性，JavaScript基本上永远不会成为你的性能瓶颈。我们可以通过图像压缩、网络存取和减少回流等来优化性能。如果你看过整篇篇文章后只能记住一条，请记住这条。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// 糟糕的 (albeit way faster)</div><div class="line">const arr = [1, 2, 3, 4];</div><div class="line">const len = arr.length;</div><div class="line">var i = -1;</div><div class="line">var result = [];</div><div class="line">while (++i &lt; len) &#123;</div><div class="line">  var n = arr[i];</div><div class="line">  if (n % 2 &gt; 0) continue;</div><div class="line">  result.push(n * n);</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const arr = [1, 2, 3, 4];</div><div class="line">const isEven = n =&gt; n % 2 == 0;</div><div class="line">const square = n =&gt; n * n;</div><div class="line"></div><div class="line">const result = arr.filter(isEven).map(square);</div></pre></td></tr></table></figure>
+<h3 id="无领域"><a href="#无领域" class="headerlink" title="无领域"></a>无领域</h3><p>尽量保持你函数的纯净。理想地，应该创建无副作用的、不使用外部数据的并返回新对象(而不是改变现有的)的函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const merge = (target, ...sources) =&gt; Object.assign(target, ...sources);</div><div class="line">merge(&#123; foo: &quot;foo&quot; &#125;, &#123; bar: &quot;bar&quot; &#125;); // =&gt; &#123; foo: &quot;foo&quot;, bar: &quot;bar&quot; &#125;</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const merge = (...sources) =&gt; Object.assign(&#123;&#125;, ...sources);</div><div class="line">merge(&#123; foo: &quot;foo&quot; &#125;, &#123; bar: &quot;bar&quot; &#125;); // =&gt; &#123; foo: &quot;foo&quot;, bar: &quot;bar&quot; &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="原生"><a href="#原生" class="headerlink" title="原生"></a>原生</h3><p>尽可能依赖原生的方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const toArray = obj =&gt; [].slice.call(obj);</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const toArray = (() =&gt;</div><div class="line">  Array.from ? Array.from : obj =&gt; [].slice.call(obj)</div><div class="line">)();</div></pre></td></tr></table></figure></p>
+<h3 id="强制"><a href="#强制" class="headerlink" title="强制"></a>强制</h3><p>不要在不必要的时候使用隐形强制<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">if (x === undefined || x === null) &#123; ... &#125;</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">if (x == undefined) &#123; ... &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h3><p>不要使用循环,因为他们强迫你使用可变的对象。可以依赖<code>array.prototype</code>方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const sum = arr =&gt; &#123;</div><div class="line">  var sum = 0;</div><div class="line">  var i = -1;</div><div class="line">  for (;arr[++i];) &#123;</div><div class="line">    sum += arr[i];</div><div class="line">  &#125;</div><div class="line">  return sum;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">sum([1, 2, 3]); // =&gt; 6</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const sum = arr =&gt;</div><div class="line">  arr.reduce((x, y) =&gt; x + y);</div><div class="line"></div><div class="line">sum([1, 2, 3]); // =&gt; 6</div></pre></td></tr></table></figure></p>
+<p>如果你不能避免使用循环,或者使用<code>array.prototype</code>方法对你来说是一种受虐的行为,可以使用递归<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const createDivs = howMany =&gt; &#123;</div><div class="line">  while (howMany--) &#123;</div><div class="line">    document.body.insertAdjacentHTML(&quot;beforeend&quot;, &quot;&lt;div&gt;&lt;/div&gt;&quot;);</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line">createDivs(5);</div><div class="line"></div><div class="line">// 糟糕的</div><div class="line">const createDivs = howMany =&gt;</div><div class="line">  [...Array(howMany)].forEach(() =&gt;</div><div class="line">    document.body.insertAdjacentHTML(&quot;beforeend&quot;, &quot;&lt;div&gt;&lt;/div&gt;&quot;)</div><div class="line">  );</div><div class="line">createDivs(5);</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const createDivs = howMany =&gt; &#123;</div><div class="line">  if (!howMany) return;</div><div class="line">  document.body.insertAdjacentHTML(&quot;beforeend&quot;, &quot;&lt;div&gt;&lt;/div&gt;&quot;);</div><div class="line">  return createDivs(howMany - 1);</div><div class="line">&#125;;</div><div class="line">createDivs(5);</div></pre></td></tr></table></figure></p>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>忘记<code>arguments</code>对象。使用其余的参数才是更好的选择,这是因为：</p>
+<ol>
+<li>其余的参数是被命名的,所以你可以给这个函数的参数一个更好的注意</li>
+<li>其余的参数是一个真正的数组,这使得它更容易使用。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const sortNumbers = () =&gt;</div><div class="line">  Array.prototype.slice.call(arguments).sort();</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const sortNumbers = (...numbers) =&gt; numbers.sort();</div></pre></td></tr></table></figure>
+<h3 id="Apply"><a href="#Apply" class="headerlink" title="Apply"></a>Apply</h3><p>忘记Apply()函数，使用扩展来代替<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">const greet = (first, last) =&gt; `Hi $&#123;first&#125; $&#123;last&#125;`;</div><div class="line">const person = [&quot;John&quot;, &quot;Doe&quot;];</div><div class="line"></div><div class="line">// 糟糕的</div><div class="line">greet.apply(null, person);</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">greet(...person);</div></pre></td></tr></table></figure></p>
+<h3 id="绑定"><a href="#绑定" class="headerlink" title="绑定"></a>绑定</h3><p>忘记bind()函数，这里有个更惯用的方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">[&quot;foo&quot;, &quot;bar&quot;].forEach(func.bind(this));</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">[&quot;foo&quot;, &quot;bar&quot;].forEach(func, this);</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const person = &#123;</div><div class="line">  first: &quot;John&quot;,</div><div class="line">  last: &quot;Doe&quot;,</div><div class="line">  greet() &#123;</div><div class="line">    const full = function() &#123;</div><div class="line">      return `$&#123;this.first&#125; $&#123;this.last&#125;`;</div><div class="line">    &#125;.bind(this);</div><div class="line">    return `Hello $&#123;full()&#125;`;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const person = &#123;</div><div class="line">  first: &quot;John&quot;,</div><div class="line">  last: &quot;Doe&quot;,</div><div class="line">  greet() &#123;</div><div class="line">    const full = () =&gt; `$&#123;this.first&#125; $&#123;this.last&#125;`;</div><div class="line">    return `Hello $&#123;full()&#125;`;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="高层级的函数"><a href="#高层级的函数" class="headerlink" title="高层级的函数"></a>高层级的函数</h3><p>在不必需的时候避免使用嵌套函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">[1, 2, 3].map(num =&gt; String(num));</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">[1, 2, 3].map(String);</div></pre></td></tr></table></figure></p>
+<h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p>避免函数的多层次调用，合理使用结构来解决问题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">const plus1 = a =&gt; a + 1;</div><div class="line">const mult2 = a =&gt; a * 2;</div><div class="line"></div><div class="line">// 糟糕的</div><div class="line">mult2(plus1(5)); // =&gt; 12</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const pipeline = (...funcs) =&gt; val =&gt; funcs.reduce((a, b) =&gt; b(a), val);</div><div class="line">const addThenMult = pipeline(plus1, mult2);</div><div class="line">addThenMult(5); // =&gt; 12</div></pre></td></tr></table></figure></p>
+<h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><p>缓存功能测试、大数据结构和任何昂贵的操作。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const contains = (arr, value) =&gt;</div><div class="line">  Array.prototype.includes</div><div class="line">    ? arr.includes(value)</div><div class="line">    : arr.some(el =&gt; el === value);</div><div class="line">contains([&quot;foo&quot;, &quot;bar&quot;], &quot;baz&quot;); // =&gt; false</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const contains = (() =&gt;</div><div class="line">  Array.prototype.includes</div><div class="line">    ? (arr, value) =&gt; arr.includes(value)</div><div class="line">    : (arr, value) =&gt; arr.some(el =&gt; el === value)</div><div class="line">)();</div><div class="line">contains([&quot;foo&quot;, &quot;bar&quot;], &quot;baz&quot;); // =&gt; false</div></pre></td></tr></table></figure></p>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p><code>const</code>优于 <code>let</code>优于 <code>var</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">var me = new Map();</div><div class="line">me.set(&quot;name&quot;, &quot;Ben&quot;).set(&quot;country&quot;, &quot;Belgium&quot;);</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const me = new Map();</div><div class="line">me.set(&quot;name&quot;, &quot;Ben&quot;).set(&quot;country&quot;, &quot;Belgium&quot;);</div></pre></td></tr></table></figure></p>
+<h3 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h3><p><code>if+return语句</code>  优于 <code>if...else if...else</code> 和<code>switch</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">var grade;</div><div class="line">if (result &lt; 50)</div><div class="line">  grade = &quot;糟糕的&quot;;</div><div class="line">else if (result &lt; 90)</div><div class="line">  grade = &quot;推荐的&quot;;</div><div class="line">else</div><div class="line">  grade = &quot;excellent&quot;;</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const grade = (() =&gt; &#123;</div><div class="line">  if (result &lt; 50)</div><div class="line">    return &quot;糟糕的&quot;;</div><div class="line">  if (result &lt; 90)</div><div class="line">    return &quot;推荐的&quot;;</div><div class="line">  return &quot;excellent&quot;;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure></p>
+<h3 id="对象迭代"><a href="#对象迭代" class="headerlink" title="对象迭代"></a>对象迭代</h3><p>避免使用<code>for...in</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">const shared = &#123; foo: &quot;foo&quot; &#125;;</div><div class="line">const obj = Object.create(shared, &#123;</div><div class="line">  bar: &#123;</div><div class="line">    value: &quot;bar&quot;,</div><div class="line">    enumerable: true</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 糟糕的</div><div class="line">for (var prop in obj) &#123;</div><div class="line">  if (obj.hasOwnProperty(prop))</div><div class="line">    console.log(prop);</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">Object.keys(obj).forEach(prop =&gt; console.log(prop));</div></pre></td></tr></table></figure></p>
+<h3 id="把对象作为maps"><a href="#把对象作为maps" class="headerlink" title="把对象作为maps"></a>把对象作为maps</h3><p>虽然对象是一个合法的用例，但map是一个更好更强大的选择<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const me = &#123;</div><div class="line">  name: &quot;Ben&quot;,</div><div class="line">  age: 30</div><div class="line">&#125;;</div><div class="line">var meSize = Object.keys(me).length;</div><div class="line">meSize; // =&gt; 2</div><div class="line">me.country = &quot;Belgium&quot;;</div><div class="line">meSize++;</div><div class="line">meSize; // =&gt; 3</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const me = new Map();</div><div class="line">me.set(&quot;name&quot;, &quot;Ben&quot;);</div><div class="line">me.set(&quot;age&quot;, 30);</div><div class="line">me.size; // =&gt; 2</div><div class="line">me.set(&quot;country&quot;, &quot;Belgium&quot;);</div><div class="line">me.size; // =&gt; 3</div></pre></td></tr></table></figure></p>
+<h3 id="柯里化"><a href="#柯里化" class="headerlink" title="柯里化"></a>柯里化</h3><p>对许多开发者来说，柯里化是一个带有国外范的强大形式。合理化地使用它是非常妙的，但是请不要滥用它<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const sum = a =&gt; b =&gt; a + b;</div><div class="line">sum(5)(3); // =&gt; 8</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const sum = (a, b) =&gt; a + b;</div><div class="line">sum(5, 3); // =&gt; 8</div></pre></td></tr></table></figure></p>
+<h3 id="可读性"><a href="#可读性" class="headerlink" title="可读性"></a>可读性</h3><p>不要使用一些表面看起来很巧妙的技巧来导致你代码的意思模糊不清(即不可读)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">foo || doSomething();</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">if (!foo) doSomething();</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">void function() &#123; /* IIFE */ &#125;();</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">(function() &#123; /* IIFE */ &#125;());</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const n = ~~3.14;</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const n = Math.floor(3.14);</div></pre></td></tr></table></figure>
+<h3 id="代码复用"><a href="#代码复用" class="headerlink" title="代码复用"></a>代码复用</h3><p>不要抗拒去创建一些体积小,高度可组合、可重用的函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">arr[arr.length - 1];</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const first = arr =&gt; arr[0];</div><div class="line">const last = arr =&gt; first(arr.slice(-1));</div><div class="line">last(arr);</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const product = (a, b) =&gt; a * b;</div><div class="line">const triple = n =&gt; n * 3;</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const product = (a, b) =&gt; a * b;</div><div class="line">const triple = product.bind(null, 3);</div></pre></td></tr></table></figure>
+<h3 id="依赖性"><a href="#依赖性" class="headerlink" title="依赖性"></a>依赖性</h3><p>减少依赖。第三方的代码是你不了解的,不要仅仅为了几个可复制的函数而加载整个第三方文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">var _ = require(&quot;underscore&quot;);</div><div class="line">_.compact([&quot;foo&quot;, 0]));</div><div class="line">_.unique([&quot;foo&quot;, &quot;foo&quot;]);</div><div class="line">_.union([&quot;foo&quot;], [&quot;bar&quot;], [&quot;foo&quot;]);</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const compact = arr =&gt; arr.filter(el =&gt; el);</div><div class="line">const unique = arr =&gt; [...Set(arr)];</div><div class="line">const union = (...arr) =&gt; unique([].concat(...arr));</div><div class="line"></div><div class="line">compact([&quot;foo&quot;, 0]);</div><div class="line">unique([&quot;foo&quot;, &quot;foo&quot;]);</div><div class="line">union([&quot;foo&quot;], [&quot;bar&quot;], [&quot;foo&quot;]);</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;/2015/12/24/前端代码指南-一/&quot;&gt;前端代码指南(一)&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;/2015/12/25/前端代码指南-二/&quot;&gt;前端代码指南(二)&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;/2015/12/25/前端代码指南-三/&quot;&gt;前端代码指南(
+    
+    </summary>
+    
+      <category term="web前端" scheme="http://www.godgoods.website/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="javascript" scheme="http://www.godgoods.website/tags/javascript/"/>
+    
+      <category term="翻译" scheme="http://www.godgoods.website/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+      <category term="代码风格" scheme="http://www.godgoods.website/tags/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC/"/>
     
   </entry>
   
@@ -1055,380 +1429,6 @@ sayHello(&quot;brand&quot;) //&quot;hello,my name is brandI am 18&quot;
     
     
       <category term="javascript" scheme="http://www.godgoods.website/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端代码指南(一) —— HTML</title>
-    <link href="http://www.godgoods.website/p/%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E6%8C%87%E5%8D%97-%E4%B8%80.html"/>
-    <id>http://www.godgoods.website/p/前端代码指南-一.html</id>
-    <published>2016-09-09T03:05:00.000Z</published>
-    <updated>2017-05-12T06:23:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文翻译自bendc的<a href="https://github.com/bendc/frontend-guidelines?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io" target="_blank" rel="external">《Frontend Guidelines》</a>，由于篇幅过长，这里我分成了三篇，分别为HTML、CSS、Javascript，主要介绍了HTML/CSS/Javascript的代码指南，文章中所提出的指南也并不绝对，一切从实际出发，大家可以根据自己所需来取舍。说实话，英语真的不好,请见谅，欢迎大家纠错，Thanks。</p>
-<p><a href="/2015/12/24/前端代码指南-一/">前端代码指南(一)</a><br><a href="/2015/12/25/前端代码指南-二/">前端代码指南(二)</a><br><a href="/2015/12/25/前端代码指南-三/">前端代码指南(三)</a></p>
-<h3 id="语义化"><a href="#语义化" class="headerlink" title="语义化"></a>语义化</h3><p>HTML5为我们提供了大量的语义化标签使我们可以准确地描述内容，所以请使用这些语义化标签。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 糟糕的 --&gt;</div><div class="line">&lt;div id=&quot;main&quot;&gt;</div><div class="line">  &lt;div class=&quot;article&quot;&gt;</div><div class="line">    &lt;div class=&quot;header&quot;&gt;</div><div class="line">      &lt;h1&gt;Blog post&lt;/h1&gt;</div><div class="line">      &lt;p&gt;Published: &lt;span&gt;21st Feb, 2015&lt;/span&gt;&lt;/p&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;p&gt;…&lt;/p&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;!-- 推荐的--&gt;</div><div class="line">&lt;main&gt;</div><div class="line">  &lt;article&gt;</div><div class="line">    &lt;header&gt;</div><div class="line">      &lt;h1&gt;Blog post&lt;/h1&gt;</div><div class="line">      &lt;p&gt;Published: &lt;time datetime=&quot;2015-02-21&quot;&gt;21st Feb, 2015&lt;/time&gt;&lt;/p&gt;</div><div class="line">    &lt;/header&gt;</div><div class="line">    &lt;p&gt;…&lt;/p&gt;</div><div class="line">  &lt;/article&gt;</div><div class="line">&lt;/main&gt;</div></pre></td></tr></table></figure>
-<p>但是请确保你了解你使用的语义化标签。如果错误地使用语义化标签还不如不用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 糟糕的 --&gt;</div><div class="line">&lt;h1&gt;</div><div class="line">  &lt;figure&gt;</div><div class="line">    &lt;img alt=Company src=logo.png&gt;</div><div class="line">  &lt;/figure&gt;</div><div class="line">&lt;/h1&gt;</div><div class="line"></div><div class="line">&lt;!-- 推荐的 --&gt;</div><div class="line">&lt;h1&gt;</div><div class="line">  &lt;img alt=Company src=logo.png&gt;</div><div class="line">&lt;/h1&gt;</div></pre></td></tr></table></figure></p>
-<h3 id="简洁"><a href="#简洁" class="headerlink" title="简洁"></a>简洁</h3><p>保持代码简洁，忘记你XHTML的旧习惯。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 糟糕的 --&gt;</div><div class="line">&lt;!doctype html&gt;</div><div class="line">&lt;html lang=en&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;meta http-equiv=Content-Type content=&quot;text/html; charset=utf-8&quot; /&gt;</div><div class="line">    &lt;title&gt;Contact&lt;/title&gt;</div><div class="line">    &lt;link rel=stylesheet href=style.css type=text/css /&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;h1&gt;Contact me&lt;/h1&gt;</div><div class="line">    &lt;label&gt;</div><div class="line">      Email address:</div><div class="line">      &lt;input type=email placeholder=you@email.com required=required /&gt;</div><div class="line">    &lt;/label&gt;</div><div class="line">    &lt;script src=main.js type=text/javascript&gt;&lt;/script&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div><div class="line"></div><div class="line">&lt;!-- 推荐的 --&gt;</div><div class="line">&lt;!doctype html&gt;</div><div class="line">&lt;html lang=en&gt;</div><div class="line">  &lt;meta charset=utf-8&gt;</div><div class="line">  &lt;title&gt;Contact&lt;/title&gt;</div><div class="line">  &lt;link rel=stylesheet href=style.css&gt;</div><div class="line"></div><div class="line">  &lt;h1&gt;Contact me&lt;/h1&gt;</div><div class="line">  &lt;label&gt;</div><div class="line">    Email address:</div><div class="line">    &lt;input type=email placeholder=you@email.com required&gt;</div><div class="line">  &lt;/label&gt;</div><div class="line">  &lt;script src=main.js&gt;&lt;/script&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
-<h3 id="可访问性"><a href="#可访问性" class="headerlink" title="可访问性"></a>可访问性</h3><p>可访问性不是事后才解决的。你不需要成为一个WCAG专家才能提高你网站的可访问性,你可以通过修复一些小细节来实现,比如：</p>
-<ul>
-<li>学会正确使用alt属性;</li>
-<li>确保标记你的超链接和按钮(即让别人看到就明白那个地方是超链接或按钮)</li>
-<li>不要仅使用色彩来传达意思(主要考虑视力障碍者)</li>
-<li>显式地标记(label)字段(使用label标签)</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 糟糕的 --&gt;</div><div class="line">&lt;h1&gt;&lt;img alt=&quot;Logo&quot; src=&quot;logo.png&quot;&gt;&lt;/h1&gt;</div><div class="line"></div><div class="line">&lt;!-- 推荐的 --&gt;</div><div class="line">&lt;h1&gt;&lt;img alt=&quot;My Company, Inc.&quot; src=&quot;logo.png&quot;&gt;&lt;/h1&gt;</div></pre></td></tr></table></figure>
-<h3 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h3><p>虽然声明语言和字符编码是可选的,但是强烈建议在文档内声明(即使他们已经在HTTP头内指定)。编码格式建议优先考虑utf-8。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 糟糕的 --&gt;</div><div class="line">&lt;!doctype html&gt;</div><div class="line">&lt;title&gt;Hello, world.&lt;/title&gt;</div><div class="line"></div><div class="line">&lt;!-- 推荐的 --&gt;</div><div class="line">&lt;!doctype html&gt;</div><div class="line">&lt;html lang=en&gt;</div><div class="line">  &lt;meta charset=utf-8&gt;</div><div class="line">  &lt;title&gt;Hello, world.&lt;/title&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
-<h3 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h3><p>除非某个脚本必须在内容之前加载,否则不要让js阻止页面的呈现。如果你的css文件很大，请将这个css文件分离为俩个css文件(<code>需要首先加载的</code>和<code>可延迟加载的</code>)。俩个http请求虽然比一个慢得多，但是”感官上的速度”才是最重要的因素。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 糟糕的 --&gt;</div><div class="line">&lt;!doctype html&gt;</div><div class="line">&lt;meta charset=utf-8&gt;</div><div class="line">&lt;script src=analytics.js&gt;&lt;/script&gt;</div><div class="line">&lt;title&gt;Hello, world.&lt;/title&gt;</div><div class="line">&lt;p&gt;...&lt;/p&gt;</div><div class="line"></div><div class="line">&lt;!-- 推荐的 --&gt;</div><div class="line">&lt;!doctype html&gt;</div><div class="line">&lt;meta charset=utf-8&gt;</div><div class="line">&lt;title&gt;Hello, world.&lt;/title&gt;</div><div class="line">&lt;p&gt;...&lt;/p&gt;</div><div class="line">&lt;script src=analytics.js&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文翻译自bendc的&lt;a href=&quot;https://github.com/bendc/frontend-guidelines?hmsr=toutiao.io&amp;amp;utm_medium=toutiao.io&amp;amp;utm_source=toutiao.io&quot; tar
-    
-    </summary>
-    
-      <category term="web前端" scheme="http://www.godgoods.website/categories/web%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="翻译" scheme="http://www.godgoods.website/tags/%E7%BF%BB%E8%AF%91/"/>
-    
-      <category term="代码风格" scheme="http://www.godgoods.website/tags/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC/"/>
-    
-      <category term="HTML" scheme="http://www.godgoods.website/tags/HTML/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端代码指南(三) —— javascript</title>
-    <link href="http://www.godgoods.website/p/%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E6%8C%87%E5%8D%97-%E4%B8%89.html"/>
-    <id>http://www.godgoods.website/p/前端代码指南-三.html</id>
-    <published>2016-09-09T03:05:00.000Z</published>
-    <updated>2017-05-12T06:23:38.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="/2015/12/24/前端代码指南-一/">前端代码指南(一)</a><br><a href="/2015/12/25/前端代码指南-二/">前端代码指南(二)</a><br><a href="/2015/12/25/前端代码指南-三/">前端代码指南(三)</a></p>
-<p><b style="color:#d44950">注：</b> 下面ES6的语法</p>
-<h3 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h3><p>性能中最重要的是可读性、正确性和可表达性，JavaScript基本上永远不会成为你的性能瓶颈。我们可以通过图像压缩、网络存取和减少回流等来优化性能。如果你看过整篇篇文章后只能记住一条，请记住这条。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// 糟糕的 (albeit way faster)</div><div class="line">const arr = [1, 2, 3, 4];</div><div class="line">const len = arr.length;</div><div class="line">var i = -1;</div><div class="line">var result = [];</div><div class="line">while (++i &lt; len) &#123;</div><div class="line">  var n = arr[i];</div><div class="line">  if (n % 2 &gt; 0) continue;</div><div class="line">  result.push(n * n);</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const arr = [1, 2, 3, 4];</div><div class="line">const isEven = n =&gt; n % 2 == 0;</div><div class="line">const square = n =&gt; n * n;</div><div class="line"></div><div class="line">const result = arr.filter(isEven).map(square);</div></pre></td></tr></table></figure>
-<h3 id="无领域"><a href="#无领域" class="headerlink" title="无领域"></a>无领域</h3><p>尽量保持你函数的纯净。理想地，应该创建无副作用的、不使用外部数据的并返回新对象(而不是改变现有的)的函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const merge = (target, ...sources) =&gt; Object.assign(target, ...sources);</div><div class="line">merge(&#123; foo: &quot;foo&quot; &#125;, &#123; bar: &quot;bar&quot; &#125;); // =&gt; &#123; foo: &quot;foo&quot;, bar: &quot;bar&quot; &#125;</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const merge = (...sources) =&gt; Object.assign(&#123;&#125;, ...sources);</div><div class="line">merge(&#123; foo: &quot;foo&quot; &#125;, &#123; bar: &quot;bar&quot; &#125;); // =&gt; &#123; foo: &quot;foo&quot;, bar: &quot;bar&quot; &#125;</div></pre></td></tr></table></figure></p>
-<h3 id="原生"><a href="#原生" class="headerlink" title="原生"></a>原生</h3><p>尽可能依赖原生的方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const toArray = obj =&gt; [].slice.call(obj);</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const toArray = (() =&gt;</div><div class="line">  Array.from ? Array.from : obj =&gt; [].slice.call(obj)</div><div class="line">)();</div></pre></td></tr></table></figure></p>
-<h3 id="强制"><a href="#强制" class="headerlink" title="强制"></a>强制</h3><p>不要在不必要的时候使用隐形强制<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">if (x === undefined || x === null) &#123; ... &#125;</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">if (x == undefined) &#123; ... &#125;</div></pre></td></tr></table></figure></p>
-<h3 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h3><p>不要使用循环,因为他们强迫你使用可变的对象。可以依赖<code>array.prototype</code>方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const sum = arr =&gt; &#123;</div><div class="line">  var sum = 0;</div><div class="line">  var i = -1;</div><div class="line">  for (;arr[++i];) &#123;</div><div class="line">    sum += arr[i];</div><div class="line">  &#125;</div><div class="line">  return sum;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">sum([1, 2, 3]); // =&gt; 6</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const sum = arr =&gt;</div><div class="line">  arr.reduce((x, y) =&gt; x + y);</div><div class="line"></div><div class="line">sum([1, 2, 3]); // =&gt; 6</div></pre></td></tr></table></figure></p>
-<p>如果你不能避免使用循环,或者使用<code>array.prototype</code>方法对你来说是一种受虐的行为,可以使用递归<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const createDivs = howMany =&gt; &#123;</div><div class="line">  while (howMany--) &#123;</div><div class="line">    document.body.insertAdjacentHTML(&quot;beforeend&quot;, &quot;&lt;div&gt;&lt;/div&gt;&quot;);</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line">createDivs(5);</div><div class="line"></div><div class="line">// 糟糕的</div><div class="line">const createDivs = howMany =&gt;</div><div class="line">  [...Array(howMany)].forEach(() =&gt;</div><div class="line">    document.body.insertAdjacentHTML(&quot;beforeend&quot;, &quot;&lt;div&gt;&lt;/div&gt;&quot;)</div><div class="line">  );</div><div class="line">createDivs(5);</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const createDivs = howMany =&gt; &#123;</div><div class="line">  if (!howMany) return;</div><div class="line">  document.body.insertAdjacentHTML(&quot;beforeend&quot;, &quot;&lt;div&gt;&lt;/div&gt;&quot;);</div><div class="line">  return createDivs(howMany - 1);</div><div class="line">&#125;;</div><div class="line">createDivs(5);</div></pre></td></tr></table></figure></p>
-<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>忘记<code>arguments</code>对象。使用其余的参数才是更好的选择,这是因为：</p>
-<ol>
-<li>其余的参数是被命名的,所以你可以给这个函数的参数一个更好的注意</li>
-<li>其余的参数是一个真正的数组,这使得它更容易使用。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const sortNumbers = () =&gt;</div><div class="line">  Array.prototype.slice.call(arguments).sort();</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const sortNumbers = (...numbers) =&gt; numbers.sort();</div></pre></td></tr></table></figure>
-<h3 id="Apply"><a href="#Apply" class="headerlink" title="Apply"></a>Apply</h3><p>忘记Apply()函数，使用扩展来代替<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">const greet = (first, last) =&gt; `Hi $&#123;first&#125; $&#123;last&#125;`;</div><div class="line">const person = [&quot;John&quot;, &quot;Doe&quot;];</div><div class="line"></div><div class="line">// 糟糕的</div><div class="line">greet.apply(null, person);</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">greet(...person);</div></pre></td></tr></table></figure></p>
-<h3 id="绑定"><a href="#绑定" class="headerlink" title="绑定"></a>绑定</h3><p>忘记bind()函数，这里有个更惯用的方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">[&quot;foo&quot;, &quot;bar&quot;].forEach(func.bind(this));</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">[&quot;foo&quot;, &quot;bar&quot;].forEach(func, this);</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const person = &#123;</div><div class="line">  first: &quot;John&quot;,</div><div class="line">  last: &quot;Doe&quot;,</div><div class="line">  greet() &#123;</div><div class="line">    const full = function() &#123;</div><div class="line">      return `$&#123;this.first&#125; $&#123;this.last&#125;`;</div><div class="line">    &#125;.bind(this);</div><div class="line">    return `Hello $&#123;full()&#125;`;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const person = &#123;</div><div class="line">  first: &quot;John&quot;,</div><div class="line">  last: &quot;Doe&quot;,</div><div class="line">  greet() &#123;</div><div class="line">    const full = () =&gt; `$&#123;this.first&#125; $&#123;this.last&#125;`;</div><div class="line">    return `Hello $&#123;full()&#125;`;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="高层级的函数"><a href="#高层级的函数" class="headerlink" title="高层级的函数"></a>高层级的函数</h3><p>在不必需的时候避免使用嵌套函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">[1, 2, 3].map(num =&gt; String(num));</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">[1, 2, 3].map(String);</div></pre></td></tr></table></figure></p>
-<h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p>避免函数的多层次调用，合理使用结构来解决问题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">const plus1 = a =&gt; a + 1;</div><div class="line">const mult2 = a =&gt; a * 2;</div><div class="line"></div><div class="line">// 糟糕的</div><div class="line">mult2(plus1(5)); // =&gt; 12</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const pipeline = (...funcs) =&gt; val =&gt; funcs.reduce((a, b) =&gt; b(a), val);</div><div class="line">const addThenMult = pipeline(plus1, mult2);</div><div class="line">addThenMult(5); // =&gt; 12</div></pre></td></tr></table></figure></p>
-<h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><p>缓存功能测试、大数据结构和任何昂贵的操作。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const contains = (arr, value) =&gt;</div><div class="line">  Array.prototype.includes</div><div class="line">    ? arr.includes(value)</div><div class="line">    : arr.some(el =&gt; el === value);</div><div class="line">contains([&quot;foo&quot;, &quot;bar&quot;], &quot;baz&quot;); // =&gt; false</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const contains = (() =&gt;</div><div class="line">  Array.prototype.includes</div><div class="line">    ? (arr, value) =&gt; arr.includes(value)</div><div class="line">    : (arr, value) =&gt; arr.some(el =&gt; el === value)</div><div class="line">)();</div><div class="line">contains([&quot;foo&quot;, &quot;bar&quot;], &quot;baz&quot;); // =&gt; false</div></pre></td></tr></table></figure></p>
-<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p><code>const</code>优于 <code>let</code>优于 <code>var</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">var me = new Map();</div><div class="line">me.set(&quot;name&quot;, &quot;Ben&quot;).set(&quot;country&quot;, &quot;Belgium&quot;);</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const me = new Map();</div><div class="line">me.set(&quot;name&quot;, &quot;Ben&quot;).set(&quot;country&quot;, &quot;Belgium&quot;);</div></pre></td></tr></table></figure></p>
-<h3 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h3><p><code>if+return语句</code>  优于 <code>if...else if...else</code> 和<code>switch</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">var grade;</div><div class="line">if (result &lt; 50)</div><div class="line">  grade = &quot;糟糕的&quot;;</div><div class="line">else if (result &lt; 90)</div><div class="line">  grade = &quot;推荐的&quot;;</div><div class="line">else</div><div class="line">  grade = &quot;excellent&quot;;</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const grade = (() =&gt; &#123;</div><div class="line">  if (result &lt; 50)</div><div class="line">    return &quot;糟糕的&quot;;</div><div class="line">  if (result &lt; 90)</div><div class="line">    return &quot;推荐的&quot;;</div><div class="line">  return &quot;excellent&quot;;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure></p>
-<h3 id="对象迭代"><a href="#对象迭代" class="headerlink" title="对象迭代"></a>对象迭代</h3><p>避免使用<code>for...in</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">const shared = &#123; foo: &quot;foo&quot; &#125;;</div><div class="line">const obj = Object.create(shared, &#123;</div><div class="line">  bar: &#123;</div><div class="line">    value: &quot;bar&quot;,</div><div class="line">    enumerable: true</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 糟糕的</div><div class="line">for (var prop in obj) &#123;</div><div class="line">  if (obj.hasOwnProperty(prop))</div><div class="line">    console.log(prop);</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">Object.keys(obj).forEach(prop =&gt; console.log(prop));</div></pre></td></tr></table></figure></p>
-<h3 id="把对象作为maps"><a href="#把对象作为maps" class="headerlink" title="把对象作为maps"></a>把对象作为maps</h3><p>虽然对象是一个合法的用例，但map是一个更好更强大的选择<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const me = &#123;</div><div class="line">  name: &quot;Ben&quot;,</div><div class="line">  age: 30</div><div class="line">&#125;;</div><div class="line">var meSize = Object.keys(me).length;</div><div class="line">meSize; // =&gt; 2</div><div class="line">me.country = &quot;Belgium&quot;;</div><div class="line">meSize++;</div><div class="line">meSize; // =&gt; 3</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const me = new Map();</div><div class="line">me.set(&quot;name&quot;, &quot;Ben&quot;);</div><div class="line">me.set(&quot;age&quot;, 30);</div><div class="line">me.size; // =&gt; 2</div><div class="line">me.set(&quot;country&quot;, &quot;Belgium&quot;);</div><div class="line">me.size; // =&gt; 3</div></pre></td></tr></table></figure></p>
-<h3 id="柯里化"><a href="#柯里化" class="headerlink" title="柯里化"></a>柯里化</h3><p>对许多开发者来说，柯里化是一个带有国外范的强大形式。合理化地使用它是非常妙的，但是请不要滥用它<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const sum = a =&gt; b =&gt; a + b;</div><div class="line">sum(5)(3); // =&gt; 8</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const sum = (a, b) =&gt; a + b;</div><div class="line">sum(5, 3); // =&gt; 8</div></pre></td></tr></table></figure></p>
-<h3 id="可读性"><a href="#可读性" class="headerlink" title="可读性"></a>可读性</h3><p>不要使用一些表面看起来很巧妙的技巧来导致你代码的意思模糊不清(即不可读)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">foo || doSomething();</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">if (!foo) doSomething();</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">void function() &#123; /* IIFE */ &#125;();</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">(function() &#123; /* IIFE */ &#125;());</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const n = ~~3.14;</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const n = Math.floor(3.14);</div></pre></td></tr></table></figure>
-<h3 id="代码复用"><a href="#代码复用" class="headerlink" title="代码复用"></a>代码复用</h3><p>不要抗拒去创建一些体积小,高度可组合、可重用的函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">arr[arr.length - 1];</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const first = arr =&gt; arr[0];</div><div class="line">const last = arr =&gt; first(arr.slice(-1));</div><div class="line">last(arr);</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">const product = (a, b) =&gt; a * b;</div><div class="line">const triple = n =&gt; n * 3;</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const product = (a, b) =&gt; a * b;</div><div class="line">const triple = product.bind(null, 3);</div></pre></td></tr></table></figure>
-<h3 id="依赖性"><a href="#依赖性" class="headerlink" title="依赖性"></a>依赖性</h3><p>减少依赖。第三方的代码是你不了解的,不要仅仅为了几个可复制的函数而加载整个第三方文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// 糟糕的</div><div class="line">var _ = require(&quot;underscore&quot;);</div><div class="line">_.compact([&quot;foo&quot;, 0]));</div><div class="line">_.unique([&quot;foo&quot;, &quot;foo&quot;]);</div><div class="line">_.union([&quot;foo&quot;], [&quot;bar&quot;], [&quot;foo&quot;]);</div><div class="line"></div><div class="line">// 推荐的</div><div class="line">const compact = arr =&gt; arr.filter(el =&gt; el);</div><div class="line">const unique = arr =&gt; [...Set(arr)];</div><div class="line">const union = (...arr) =&gt; unique([].concat(...arr));</div><div class="line"></div><div class="line">compact([&quot;foo&quot;, 0]);</div><div class="line">unique([&quot;foo&quot;, &quot;foo&quot;]);</div><div class="line">union([&quot;foo&quot;], [&quot;bar&quot;], [&quot;foo&quot;]);</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;/2015/12/24/前端代码指南-一/&quot;&gt;前端代码指南(一)&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;/2015/12/25/前端代码指南-二/&quot;&gt;前端代码指南(二)&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;/2015/12/25/前端代码指南-三/&quot;&gt;前端代码指南(
-    
-    </summary>
-    
-      <category term="web前端" scheme="http://www.godgoods.website/categories/web%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="javascript" scheme="http://www.godgoods.website/tags/javascript/"/>
-    
-      <category term="翻译" scheme="http://www.godgoods.website/tags/%E7%BF%BB%E8%AF%91/"/>
-    
-      <category term="代码风格" scheme="http://www.godgoods.website/tags/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端代码指南(二) —— CSS</title>
-    <link href="http://www.godgoods.website/p/%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E6%8C%87%E5%8D%97-%E4%BA%8C.html"/>
-    <id>http://www.godgoods.website/p/前端代码指南-二.html</id>
-    <published>2016-09-09T03:05:00.000Z</published>
-    <updated>2017-05-12T06:23:43.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="/2015/12/24/前端代码指南-一/">前端代码指南(一)</a><br><a href="/2015/12/25/前端代码指南-二/">前端代码指南(二)</a><br><a href="/2015/12/25/前端代码指南-三/">前端代码指南(三)</a></p>
-<h3 id="分号"><a href="#分号" class="headerlink" title="分号"></a>分号</h3><p>分号是CSS语句的分离器,请把它放在句尾。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  color: red</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  color: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h3><p>最理想的情况是盒模型在整个文档是一样的。全局设置* { box-sizing:border-box;}是可以的,但最好不要在特定的元素上改变默认的盒模型。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  width: 100%;</div><div class="line">  padding: 10px;</div><div class="line">  box-sizing: border-box;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  padding: 10px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="文档流"><a href="#文档流" class="headerlink" title="文档流"></a>文档流</h3><p> 不要改变一个元素的默认样式，尽可能保持元素在自然的文档流中。例如,删除图像下面的空白不应该改变其默认显示:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">img &#123;</div><div class="line">  display: block;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">img &#123;</div><div class="line">  vertical-align: middle;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>同样的，尽可能不要使元素脱离文档流<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  width: 100px;</div><div class="line">  position: absolute;</div><div class="line">  right: 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  width: 100px;</div><div class="line">  margin-left: auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><p>css有很多方法来定位元素,但是最好不要使用下面的属性/值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">display: block;</div><div class="line">display: flex;</div><div class="line">position: relative;</div><div class="line">position: sticky;</div><div class="line">position: absolute;</div><div class="line">position: fixed;</div></pre></td></tr></table></figure></p>
-<h3 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h3><p>减少选择器与DOM的耦合度。当你的选择器匹配的元素超过3层结构(伪类、后代或兄弟元素)。考虑添加一个类来匹配你想要的元素吧<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div:first-of-type :last-child &gt; p ~ *</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div:first-of-type .info</div></pre></td></tr></table></figure></p>
-<p>避免过载你的选择器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">img[src$=svg], ul &gt; li:first-child &#123;</div><div class="line">  opacity: 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">[src$=svg], ul &gt; :first-child &#123;</div><div class="line">  opacity: 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><p>不要让属性值和选择器难以被覆盖(应该是指优先级不要过高)，减少使用id和!important的使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">.bar &#123;</div><div class="line">  color: green !important;</div><div class="line">&#125;</div><div class="line">.foo &#123;</div><div class="line">  color: red;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">.foo.bar &#123;</div><div class="line">  color: green;</div><div class="line">&#125;</div><div class="line">.foo &#123;</div><div class="line">  color: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="覆盖"><a href="#覆盖" class="headerlink" title="覆盖"></a>覆盖</h3><p>覆盖样式会导致选择器和调试变得困难，请尽量避免<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">li &#123;</div><div class="line">  visibility: hidden;</div><div class="line">&#125;</div><div class="line">li:first-child &#123;</div><div class="line">  visibility: visible;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">li + li &#123;</div><div class="line">  visibility: hidden;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>不要重复书写可以继承的样式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div h1, div p &#123;</div><div class="line">  text-shadow: 0 1px 0 #fff;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  text-shadow: 0 1px 0 #fff;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="简洁"><a href="#简洁" class="headerlink" title="简洁"></a>简洁</h3><p>保持你的代码简洁，尽量使用简写属性,避免使用多个属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  transition: all 1s;</div><div class="line">  top: 50%;</div><div class="line">  margin-top: -10px;</div><div class="line">  padding-top: 5px;</div><div class="line">  padding-right: 10px;</div><div class="line">  padding-bottom: 20px;</div><div class="line">  padding-left: 10px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  transition: 1s;</div><div class="line">  top: calc(50% - 10px);</div><div class="line">  padding: 5px 10px 20px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h3><p>英文优于数学表达式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">:nth-child(2n + 1) &#123;</div><div class="line">  transform: rotate(360deg);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">:nth-child(odd) &#123;</div><div class="line">  transform: rotate(1turn);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="前缀"><a href="#前缀" class="headerlink" title="前缀"></a>前缀</h3><p>积极删除过时的前缀。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  transform: scale(2);</div><div class="line">  -webkit-transform: scale(2);</div><div class="line">  -moz-transform: scale(2);</div><div class="line">  -ms-transform: scale(2);</div><div class="line">  transition: 1s;</div><div class="line">  -webkit-transition: 1s;</div><div class="line">  -moz-transition: 1s;</div><div class="line">  -ms-transition: 1s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  -webkit-transform: scale(2);</div><div class="line">  transform: scale(2);</div><div class="line">  transition: 1s;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h3><p><code>animations</code>和<code>transitions</code> ，优先选择<code>transitions</code> 。除了 <code>opacity</code> 和 <code>transform</code>属性，其他属性避免使用<code>animations</code>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div:hover &#123;</div><div class="line">  animation: move 1s forwards;</div><div class="line">&#125;</div><div class="line">@keyframes move &#123;</div><div class="line">  100% &#123;</div><div class="line">    margin-left: 100px;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div:hover &#123;</div><div class="line">  transition: 1s;</div><div class="line">  transform: translateX(100px);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="单位"><a href="#单位" class="headerlink" title="单位"></a>单位</h3><p>不要对不需要使用单位的值使用单位；如果你要使用相对单位最好使用<code>rem</code>；使用秒而不是毫秒<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  margin: 0px;</div><div class="line">  font-size: .9em;</div><div class="line">  line-height: 22px;</div><div class="line">  transition: 500ms;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  margin: 0;</div><div class="line">  font-size: .9rem;</div><div class="line">  line-height: 1.5;</div><div class="line">  transition: .5s;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h3><p>如果你需要使用透明度，请使用<code>rgba</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  color: hsl(103, 54%, 43%);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  color: #5a3;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="绘制"><a href="#绘制" class="headerlink" title="绘制"></a>绘制</h3><p>如果资源文件可以轻易在css中绘制出来，就避免HTTP请求来加载</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div::before &#123;</div><div class="line">  content: url(white-circle.svg);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div::before &#123;</div><div class="line">  content: &quot;&quot;;</div><div class="line">  display: block;</div><div class="line">  width: 20px;</div><div class="line">  height: 20px;</div><div class="line">  border-radius: 50%;</div><div class="line">  background: #fff;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="Hacks"><a href="#Hacks" class="headerlink" title="Hacks"></a>Hacks</h3><p>尽量不要使用Hacks<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/* 糟糕的 */</div><div class="line">div &#123;</div><div class="line">  // position: relative;</div><div class="line">  transform: translateZ(0);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 推荐的 */</div><div class="line">div &#123;</div><div class="line">  /* position: relative; */</div><div class="line">  will-change: transform;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;/2015/12/24/前端代码指南-一/&quot;&gt;前端代码指南(一)&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;/2015/12/25/前端代码指南-二/&quot;&gt;前端代码指南(二)&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;/2015/12/25/前端代码指南-三/&quot;&gt;前端代码指南(
-    
-    </summary>
-    
-      <category term="web前端" scheme="http://www.godgoods.website/categories/web%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="翻译" scheme="http://www.godgoods.website/tags/%E7%BF%BB%E8%AF%91/"/>
-    
-      <category term="代码风格" scheme="http://www.godgoods.website/tags/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC/"/>
-    
-      <category term="css" scheme="http://www.godgoods.website/tags/css/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>实现跨域的N种方法</title>
-    <link href="http://www.godgoods.website/p/%E5%AE%9E%E7%8E%B0%E8%B7%A8%E5%9F%9F.html"/>
-    <id>http://www.godgoods.website/p/实现跨域.html</id>
-    <published>2016-09-09T03:05:00.000Z</published>
-    <updated>2017-05-22T05:05:45.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="从域说起"><a href="#从域说起" class="headerlink" title="从域说起"></a>从域说起</h2><blockquote>
-<p>域： 域是WIN2K网络系统的安全性边界。我们知道一个计算机网最基本的单元就是“域”，这一点不是WIN2K所独有的，但活动目录可以贯穿一个或多个域。在独立的计算机上，域即指计算机本身，一个域可以分布在多个物理位置上，同时一个物理位置又可以划分不同网段为不同的域，每个域都有自己的安全策略以及它与其他域的信任关系。当多个域通过信任关系连接起来之后，活动目录可以被多个信任域域共享 </p>
-<p>域树：域树由多个域组成，这些域共享同一表结构和配置，形成一个连续的名字空间。树中的域通过信任关系连接起来，活动目录包含一个或多个域树。域树中的域是通过双向可传递信任关系连接在一起。由于这些信任关系是双向的而且是可传递的，因此在域树或树林中新创建的域可以立即与域树或树林中每个其他的域建立信任关系。这些信任关系允许单一登录过程，在域树或树林中的所有域上对用户进行身份验证，但这不一定意味着经过身份验证的用户在域树的所有域中都拥有相同的权利和权限。因为域是安全界限，所以必须在每个域的基础上为用户指派相应的权利和权限。</p>
-</blockquote>
-<p><b style="color:#d44950">域树中的域层次越深级别越低，一个“.”代表一个层次。</b><br>如域<code>zhidao.baidu.com</code>(百度知道)就比 <code>baidu.com</code>(百度)这个域级别低，因为它有两个层次关系，而<code>baidu.com</code>只有一个层次。</p>
-<h2 id="何为跨域"><a href="#何为跨域" class="headerlink" title="何为跨域"></a>何为跨域</h2><blockquote>
-<p>默认情况下，，XHR 对象只能访问与包含它的页面位于同一个域中的资源。这种安全策略可以预防某些恶意行为。但是，实现合理的跨域请求对开发某些浏览器应用程序也是至关重要的。</p>
-</blockquote>
-<p><b style="color:#d44950">只要协议、域名、端口有任何一个不同，都被当作是不同的域</b></p>
-<p>比如在<a href="http://www.a.com/a.js" target="_blank" rel="external">http://www.a.com/a.js</a> 页面向以下页面发送一个ajax请求，以下是其请求结果及说明</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">URL</th>
-<th style="text-align:center">说明</th>
-<th style="text-align:center">是否允许通信</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><a href="http://www.a.com/b.js" target="_blank" rel="external">http://www.a.com/b.js</a></td>
-<td style="text-align:center">同一域名下</td>
-<td style="text-align:center">允许</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="http://www.a.com:8000/a.js" target="_blank" rel="external">http://www.a.com:8000/a.js</a></td>
-<td style="text-align:center">同一域名，不同端口</td>
-<td style="text-align:center">不允许</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="https://www.a.com/b.js" target="_blank" rel="external">https://www.a.com/b.js</a></td>
-<td style="text-align:center">同一域名，不同协议</td>
-<td style="text-align:center">不允许</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="http://script.a.com/b.js" target="_blank" rel="external">http://script.a.com/b.js</a></td>
-<td style="text-align:center">主域相同，子域不同</td>
-<td style="text-align:center">不允许</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="http://a.com/b.js" target="_blank" rel="external">http://a.com/b.js</a></td>
-<td style="text-align:center">同一域名，不同二级域名</td>
-<td style="text-align:center">不允许</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="http://www.a.com/b.js" target="_blank" rel="external">http://www.a.com/b.js</a></td>
-<td style="text-align:center">不同域名</td>
-<td style="text-align:center">不允许</td>
-</tr>
-</tbody>
-</table>
-<p><b style="color:#d44950">对于端口和协议的不同，只能通过后台来解决。我们要解决的是域名不同的问题</b></p>
-<h2 id="如何跨域"><a href="#如何跨域" class="headerlink" title="如何跨域"></a>如何跨域</h2><p><strong>(一) CORS(Cross-Origin Resource Sharing，跨源资源共享)</strong></p>
-<blockquote>
-<p>1.CORS（Cross-Origin Resource Sharing，跨源资源共享）是W3C 的一个工作草案，定义了在必须访问跨源资源时，浏览器与服务器应该如何沟通。CORS 背后的基本思想，就是使用自定义的HTTP 头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功，还是应该失败。<br>2.实现此功能非常简单，只需由服务器发送一个响应标头即可。</p>
-</blockquote>
-<p>浏览器支持情况：</p>
-<ul>
-<li>IE 8+</li>
-<li>Firefox 3.5+</li>
-<li>Opera 12+</li>
-<li>Safari 4+</li>
-<li>Chrome 3+</li>
-</ul>
-<p>假设我们页面或者应用已在 <a href="http://www.a.com/" target="_blank" rel="external">http://www.a.com/</a> 上了，而我们打算从 <a href="http://www.b.com" target="_blank" rel="external">http://www.b.com</a> 请求提取数据。一般情况下，如果我们直接使用 AJAX 来请求将会失败，浏览器也会返回错误。<br>利用 CORS，<a href="http://www.b.com" target="_blank" rel="external">http://www.b.com</a> 只需添加一个标头，就可以允许来自 <a href="http://www.a.com" target="_blank" rel="external">http://www.a.com</a> 的请求。<br>下面是用php进行的设置，“*”号表示允许任何域向我们的服务端提交请求：</p>
-<pre><code>header{&quot;Access-Control-Allow-Origin: *&quot;}
-</code></pre><p>CORS的兼容性写法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">function createCORSRequest(method, url)&#123;</div><div class="line">	var xhr = new XMLHttpRequest();</div><div class="line">	//非IE浏览器</div><div class="line">	if (&quot;withCredentials&quot; in xhr)&#123;</div><div class="line">		xhr.open(method, url, true);</div><div class="line">	//IE浏览器</div><div class="line">	&#125; else if (typeof XDomainRequest != &quot;undefined&quot;)&#123;</div><div class="line">		vxhr = new XDomainRequest();</div><div class="line">		xhr.open(method, url);</div><div class="line">	&#125; else &#123;</div><div class="line">		xhr = null;</div><div class="line">	&#125;</div><div class="line">	return xhr;</div><div class="line">&#125;</div><div class="line">var request = createCORSRequest(&quot;get&quot;, &quot;http://www.somewhere-else.com/page/&quot;);</div><div class="line">if (request)&#123;</div><div class="line">	request.onload = function()&#123;</div><div class="line">		//对request.responseText 进行处理</div><div class="line">	&#125;;</div><div class="line">	request.send();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<hr>
-<p><strong>(二) JSONP(JSON with Padding 填充式JSON 或参数式JSON)</strong></p>
-<p>在js中，我们虽然不能直接用XMLHttpRequest请求不同域上的数据时，但是在页面上引入不同域上的js脚本文件却是可以的，jsonp正是利用这个特性来实现的</p>
-<p>JSONP由两部分组成：回调函数和数据。回调函数是当响应到来时应该在页面中调用的函数，而数据就是传入回调函数中的JSON数据。</p>
-<p>例如：</p>
-<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
-    function dosomething(jsondata){
-        //处理获得的json数据
-    }
-&lt;/script&gt;
-&lt;script src=&quot;http://example.com/data.php?callback=dosomething&quot;&gt;&lt;/script&gt;
-</code></pre><ul>
-<li>首先第一个<code>script</code>便签定义了一个处理数据的函数;</li>
-<li>然后第二个<code>script</code>标签载入一个js文件，<a href="http://example.com/data.php" target="_blank" rel="external">http://example.com/data.php</a> 是数据所在地址，但是因为是当做js来引入的，所以<a href="http://example.com/data.php" target="_blank" rel="external">http://example.com/data.php</a> 返回的必须是一个能执行的js文件;</li>
-<li>最后js文件载入成功后会执行我们在url参数中指定的函数，并且会把我们需要的json数据作为参数传入。所以php应该是这样的<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">$callback = $_GET[&apos;callback&apos;];//得到回调函数名</div><div class="line">$data = array(&apos;a&apos;,&apos;b&apos;,&apos;c&apos;);//要返回的数据</div><div class="line">echo $callback.&apos;(&apos;.json_encode($data).&apos;)&apos;;//输出</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>最终，输出结果为：dosomething([‘a’,’b’,’c’]);<br>从上面可以看出jsonp是需要服务器端的页面进行相应的配合的。</p>
-<p>JSONP的优缺点<br>优点:</p>
-<ul>
-<li>它的兼容性更好，在更加古老的浏览器中都可以运行，不需要XMLHttpRequest或ActiveX的支持；</li>
-<li>能够直接访问响应文本，支持在浏览器与服务器之间双向通信</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li>JSONP 是从其他域中加载代码执行。如果其他域不安全，很可能会在响应中夹带一些恶意代码，而此时除了完全放弃JSONP 调用之外，没有办法追究。因此在使用不是你自己运维的Web 服务时，一定得保证它安全可靠。</li>
-<li>它只支持GET请求而不支持POST等其它类型的HTTP请求；它只支持跨域HTTP请求这种情况，不能解决不同域的两个页面之间如何进行JavaScript调用的问题。</li>
-</ul>
-<hr>
-<p><strong>(三) window.name</strong></p>
-<p>window对象有个<code>name</code>属性，该属性有个特征：即在一个窗口(window)的生命周期内,窗口载入的所有的页面都是共享一个window.name的，每个页面对window.name都有读写的权限，window.name是持久存在一个窗口载入过的所有页面中的，并不会因新页面的载入而进行重置。</p>
-<p>这里有三个页面：</p>
-<p>a.com/app.html：应用页面。<br>a.com/proxy.html：代理文件，一般是一个没有任何内容的html文件，需要和应用页面在同一域下。<br>b.com/data.html：应用页面需要获取数据的页面，可称为数据页面。</p>
-<p>app.html</p>
-<pre><code>&lt;iframe src=&quot;b.com/data.html&quot; id=&quot;iframe&quot;&gt;&lt;/iframe&gt;
-&lt;script&gt;
-    var iframe = document.getElementById(&quot;iframe&quot;);
-    iframe.src = &quot;a.com/proxy.html&quot;;//这是一个与a.com/app.html同源的页面
-    iframe.onload = function(){
-        var data = iframe.contentWindow.name; //取到数据
-    }
-
-&lt;/script&gt;
-</code></pre><p>data.html</p>
-<pre><code>&lt;script&gt;
-    // 这里是要传输的数据，大小一般为2M，IE和firefox下可以大至32M左右
-    // 数据格式可以自定义，如json、字符串
-    window.name = &quot;数据&quot;
-&lt;/script&gt;
-</code></pre><p>iframe首先的地址是b.com/data.html，所以能取到<code>window.name</code>数据;<br>但是iframe现在跟app.html并不同源，app.html无法获取到数据，所以又将iframe的链接跳转至a.com/proxy.html这个代理页面，现在app.html跟iframe就同源了。</p>
-<p><b style="color:#d44950">注意：iframe由b.com/data.html跳转到a.com/proxy.html页面，<code>window.name</code>的value是不变的</b></p>
-<p>获取数据以后销毁这个iframe，释放内存；这也保证了安全（不被其他域frame js访问）</p>
-<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
-    iframe.contentWindow.document.write(&apos;&apos;);
-    iframe.contentWindow.close();
-    document.body.removeChild(iframe);
-&lt;/script&gt;
-</code></pre><p><strong>(四) document.domain + iframe</strong></p>
-<p>对于主域相同而子域不同的例子，可以通过设置document.domain的办法来解决。<br>具体的做法是可以在<a href="http://www.a.com/a.html" target="_blank" rel="external">http://www.a.com/a.html</a> 和<a href="http://script.a.com/b.html" target="_blank" rel="external">http://script.a.com/b.html</a> 两个文件中分别设置<code>document.domain = &#39;a.com&#39;</code>，然后通过a.html文件中创建一个iframe，去控制iframe的contentDocument，这样两个js文件之间就可以“交互”了。<br><a href="http://www.a.com/a.html页面" target="_blank" rel="external">http://www.a.com/a.html页面</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;iframe src=&quot;http://script.a.com/b.html&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;</div><div class="line">&lt;script&gt;</div><div class="line">	document.domain = &apos;a.com&apos;;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
-<p><a href="http://script.a.com/b.html页面" target="_blank" rel="external">http://script.a.com/b.html页面</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">	document.domain = &apos;a.com&apos;;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
-<p>这样俩个页面就可以通过js相互访问各种属性和对象了。<br><b style="color:#d44950"><br>document.domain的设置是有限制的，我们只能把document.domain设置成自身或更高一级的父域，且主域必须相同。例如：a.b.example.com 中某个文档的document.domain 可以设成a.b.example.com、b.example.com 、example.com中的任意一个，但是不可以设成 c.a.b.example.com,因为这是当前域的子域，也不可以设成baidu.com,因为主域已经不相同了。</b></p>
-<hr>
-<p><strong>(五) HTML5的window.postMessage</strong></p>
-<p>window.postMessage(message,targetOrigin) 方法是html5新引进的特性，可以使用它来向其它的window对象发送消息，无论这个window对象是属于同源或不同源，目前IE8+、FireFox、Chrome、Opera等浏览器都已经支持window.postMessage方法。<br>window.postMessage允许两个窗口/帧之间跨域发送数据消息。从本质上讲，window.postMessage是一个跨域的无服务器垫片的Ajax。</p>
-<p>用法：<br>otherWindow.postMessage(message, targetOrigin);</p>
-<ul>
-<li>otherWindow: 对接收信息页面的window的引用。可以是页面中iframe的contentWindow属性；window.+open的返回值；通过name或下标从window.frames取到的值。</li>
-<li>message: 所要发送的数据，string类型。</li>
-<li>targetOrigin: 用于限制otherWindow，“*”表示不作限制</li>
-</ul>
-<p>数据发送端<br>a.com/index.html中的代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;iframe id=&quot;ifr&quot; src=&quot;b.com/index.html&quot;&gt;&lt;/iframe&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">window.onload = function() &#123;</div><div class="line">    var ifr = document.getElementById(&apos;ifr&apos;);</div><div class="line">    var targetOrigin = &apos;http://b.com&apos;;  // 若写成&apos;http://b.com/c/proxy.html&apos;效果一样</div><div class="line">                                        // 若写成&apos;http://c.com&apos;就不会执行postMessage了</div><div class="line">    ifr.contentWindow.postMessage(&apos;I was there!&apos;, targetOrigin);</div><div class="line">&#125;;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
-<p>数据接收端<br>b.com/index.html中的代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">    window.addEventListener(&apos;message&apos;, function(event)&#123;</div><div class="line">        // 通过origin属性判断消息来源地址</div><div class="line">        if (event.origin == &apos;http://a.com&apos;) &#123;</div><div class="line">            alert(event.data);    // 弹出&quot;I was there!&quot;</div><div class="line">            alert(event.source);  // 对a.com、index.html中window对象的引用</div><div class="line">                                  // 但由于同源策略，这里event.source不可以访问window对象</div><div class="line">        &#125;</div><div class="line">    &#125;, false);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
-<p>参考文章：<a href="http://www.cnblogs.com/rainman/archive/2011/02/20/1959325.html" target="_blank" rel="external">JavaScript跨域总结与解决办法</a>、<a href="http://www.cnblogs.com/2050/p/3191744.html#3322244" target="_blank" rel="external">js中几种实用的跨域方法原理详解</a></p>
-<p>脑细胞已经阵亡( ⊙ o ⊙ )</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;从域说起&quot;&gt;&lt;a href=&quot;#从域说起&quot; class=&quot;headerlink&quot; title=&quot;从域说起&quot;&gt;&lt;/a&gt;从域说起&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;域： 域是WIN2K网络系统的安全性边界。我们知道一个计算机网最基本的单元就是“域”，这一点不是W
-    
-    </summary>
-    
-      <category term="web前端" scheme="http://www.godgoods.website/categories/web%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="javascript" scheme="http://www.godgoods.website/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>rem在响应式布局中的应用</title>
-    <link href="http://www.godgoods.website/p/rem%E5%9C%A8%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8.html"/>
-    <id>http://www.godgoods.website/p/rem在响应式布局中的应用.html</id>
-    <published>2016-09-09T03:05:00.000Z</published>
-    <updated>2017-05-12T06:42:10.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="rem-em-px-pt的基友关系"><a href="#rem-em-px-pt的基友关系" class="headerlink" title="rem/em/px/pt的基友关系"></a>rem/em/px/pt的基友关系</h2><p><strong>px</strong><br>像素相对长度单位,相对于显示器屏幕分辨率而言</p>
-<p><strong>em</strong><br>相对长度单位,根据其父元素来设置字体大小</p>
-<p><strong>pt</strong><br>point，是印刷行业常用单位，等于1/72英寸</p>
-<p><strong>rem</strong><br>CSS3新增的一个相对单位,是根据网页的跟元素（html）来设置字体大小</p>
-<h2 id="rem应用于适配"><a href="#rem应用于适配" class="headerlink" title="rem应用于适配"></a>rem应用于适配</h2><p>rem的特性同样适用于width和height，我们可以根据根元素的font-size值来改变元素的宽高值，由此我们应该可以联想到我们可以根据屏幕大小动态地给html设定不同的值，从而达到我们css样式中的适配效果。</p>
-<h2 id="rem的适配规则"><a href="#rem的适配规则" class="headerlink" title="rem的适配规则"></a>rem的适配规则</h2><p><strong>1.选择基准</strong><br>虽然我们所写出的页面要在不同的屏幕大小设备上运行，但是我们写页面的时候，必须要选择其中一种屏幕大小作为初始的基准，而这个基准的选择应该根据我们所拿到的视觉稿来决定，</p>
-<p><strong>2.rem数值计算</strong><br>正常情况下rem的值默认为16px，这样在整个页面的css计算过程中太过繁琐。比如，现在有个30px宽度的元素，就得写成30/16rem。对于整个页面来说工作量还是挺大的。所以这里提供了俩种方法</p>
-<ul>
-<li><p>可以将html的font-size设置成100px<br>这样设置，在写单位时直接将数值除以100在加上rem的单位就可以了。如果设计稿的字体是16px；我们就可以写成1.6rem。</p>
-<ul>
-<li><strong>这里为什么不用10？</strong><br>因为google等浏览器对最小字体有限制，即最小为12px，所以设置10px会有问题。</li>
-</ul>
-</li>
-<li><p>使用sass</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$rem : 16x;</div><div class="line">@function px_rem($px)&#123;</div><div class="line">    @return ($px/$rem) + rem;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><strong>3.动态设置html的font-size</strong><br>随着屏幕大小的改变，html的font-size的值应该是<code>基准rem*改变后的屏幕宽度 / 基准屏幕宽度</code></p>
-<ul>
-<li><p>利用css的media query来设置（这种是一个宽度区间内是一个rem）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2)&#123;</div><div class="line">      $rem : 16x;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>利用javascript来动态设置（这种方法每一个宽度点都会有一个新的rem）</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.getElementsByTagName(<span class="string">'html'</span>)[<span class="number">0</span>].style.fontSize = 基准rem*<span class="built_in">window</span>.innerWidth / 基准屏幕宽度 + <span class="string">'px'</span>;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="考虑dpr"><a href="#考虑dpr" class="headerlink" title="考虑dpr"></a>考虑dpr</h2><p>一般我们获取到的视觉稿大部分尺寸是双倍大小的，我们一般会自觉的将标注/2，但是当我们配合rem使用时，完全可以按照视觉稿上的尺寸来设置。</p>
-<ul>
-<li><p>设计给的稿子双倍的原因是iphone等高清屏手机的存在，高清屏的像素比(device pixel ratio)dpr比较大，所以显示的像素较为清晰。</p>
-</li>
-<li><p>一般手机的dpr是1，iphone4，iphone5这种高清屏是2，iphone6s plus这种高清屏是3，可以通过js的window.devicePixelRatio获取到当前设备的dpr，所以iphone6给的视觉稿大小是（*2）750×1334了。</p>
-</li>
-<li><p>拿到了dpr之后，我们就可以在viewport meta头里，取消让浏览器自动缩放页面，而自己去设置viewport的content</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meta.setAttribute(<span class="string">'content'</span>, <span class="string">'initial-scale='</span> + <span class="number">1</span>/dpr + <span class="string">', maximum-scale='</span> + <span class="number">1</span>/dpr + <span class="string">', minimum-scale='</span> + <span class="number">1</span>/dpr + <span class="string">', user-scalable=no'</span>);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>这样我们就直接可以使用视觉稿上的尺寸了。</p>
-<p><a href="http://bigdots.github.io/blogSource/example/rem.html" target="_blank" rel="external">点击查看示例&gt;&gt;</a></p>
-<p>我的博客:<a href="http://bigdots.github.io" target="_blank" rel="external">http://bigdots.github.io</a>、<a href="http://www.cnblogs.com/yzg1/" target="_blank" rel="external">http://www.cnblogs.com/yzg1/</a></p>
-<p>如果觉得本文不错的话，帮忙点击下面的推荐哦,谢谢！</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;rem-em-px-pt的基友关系&quot;&gt;&lt;a href=&quot;#rem-em-px-pt的基友关系&quot; class=&quot;headerlink&quot; title=&quot;rem/em/px/pt的基友关系&quot;&gt;&lt;/a&gt;rem/em/px/pt的基友关系&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;px
-    
-    </summary>
-    
-      <category term="web前端" scheme="http://www.godgoods.website/categories/web%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="响应式开发" scheme="http://www.godgoods.website/tags/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
