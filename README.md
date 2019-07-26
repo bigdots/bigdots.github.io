@@ -1,3 +1,3 @@
 ## my blog by hexo
 
-url: [http://www.godgoods.website/](http://www.godgoods.website/)
+url: [https://bigdots.github.io](https://bigdots.github.io/)
