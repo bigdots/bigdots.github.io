@@ -227,15 +227,15 @@
 
 			var a = setInterval(function(){
 			 	if(i > 4){
-			 		console.log(2)
+			 		// console.log(2)
 			 		clearInterval(a)
 			 	}else if(i == 4){
-			 		console.log(3)
+			 		// console.log(3)
 			 		$('.messages').eq(i).animate({fontSize:"24px",opacity:"1"},3000);
 			 		$('#elapseClock').animate({fontSize:"18px",opacity:"1"},3000);
 			 		$('.loveu').eq(i).animate({fontSize:"22px",opacity:"1"},3000);
 			 	}else{
-			 		console.log(4)
+			 		// console.log(4)
 			 		box(i);
 			 	}
 			 	i++;
@@ -462,13 +462,21 @@
 </head>
 
 <body>
-
+<audio id="whys" autoplay='autoplay' loop='loop' controls hidden="hidden">
+  	<source src="https://raw.githubusercontent.com/bigdots/blog/gh-pages/images/whys.ogg" type="audio/ogg">
+ 	<source src="https://raw.githubusercontent.com/bigdots/blog/gh-pages/images/whys.mp3" type="audio/mpeg">
+  	<source src="https://raw.githubusercontent.com/bigdots/blog/gh-pages/images/whys.aac" type="audio/mpeg">
+  	<embed src="https://raw.githubusercontent.com/bigdots/blog/gh-pages/images/whys.mp3" autostart=true loop=true>
+</audio>
 <!-- 花瓣div -->
 <div id="leaf"></div>
 
 
 <!-- 花瓣js -->
 <script>
+
+
+
 (function(){
 
 	function piao(left,height,src){
@@ -596,11 +604,7 @@ if (!document.createElement('canvas').getContext) {
 }
 </script>
 
-<audio controls height="100" width="100">
-  <source src="//raw.githubusercontent.com/bigdots/blog/gh-pages/images/whys.aac" type="audio/mpeg">
-<!--   <source src="horse.ogg" type="audio/ogg"> -->
-  <embed height="50" width="100" src="//raw.githubusercontent.com/bigdots/blog/gh-pages/images/whys.aac">
-</audio>
+
 
 
 </body>
