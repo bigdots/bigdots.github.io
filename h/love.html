@@ -9,6 +9,23 @@
 <!-- <script type="text/javascript" src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script> -->
 <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.2/howler.core.min.js"></script>
+<script type="text/javascript">
+	var r = "https://raw.githubusercontent.com/bigdots/blog/gh-pages/images/whys."
+	var src = [r+'mp3',r+'ogg',r+'aac']
+	var sound = new Howl({
+		    src: src,
+		    autoplay: true,
+		    loop: true,
+		    volume: 0.5,
+		    onend: function() {
+		    	console.log('Finished!');
+		    }
+	});
+	window.onload = function(){
+		sound.play();
+	}
+	
+</script>
 </head>
 
 <body>
@@ -73,23 +90,7 @@
 <script src="./flower.js"></script>	
 <!-- 计时器 -->
 <script type="text/javascript" src="./interval.js"></script>
-<script type="text/javascript">
-	window.onload = function(){
-		var r = "https://raw.githubusercontent.com/bigdots/blog/gh-pages/images/whys."
-		var src = [r+'ogg',r+'mp3',r+'aac']
-		var sound = new Howl({
-		    src: src,
-		    autoplay: true,
-		    loop: true,
-		    volume: 0.5,
-		    onend: function() {
-		    	console.log('Finished!');
-		    }
-		});
-		sound.play();
-	}
-	
-</script>
+
 
 </body>
 </html>
