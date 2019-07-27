@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我爱你</title>
+<link rel="icon" href="./images/201511/love.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="./index.css">
+<!-- <link href="css/default.css" type="text/css" rel="stylesheet"> -->
+<!-- <script type="text/javascript" src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script> -->
+<script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.2/howler.core.min.js"></script>
+</head>
+
+<body>
+<!-- <audio id="whys" autoplay='autoplay' loop='loop' controls hidden="hidden">
+  	<source src="https://raw.githubusercontent.com/bigdots/blog/gh-pages/images/whys.ogg" type="audio/ogg">
+ 	<source src="https://raw.githubusercontent.com/bigdots/blog/gh-pages/images/whys.mp3" type="audio/mpeg">
+  	<source src="https://raw.githubusercontent.com/bigdots/blog/gh-pages/images/whys.aac" type="audio/mpeg">
+  	<embed src="https://raw.githubusercontent.com/bigdots/blog/gh-pages/images/whys.mp3" autostart=true loop=true>
+</audio> -->
+<!-- 花瓣div -->
+<div id="leaf"></div>
+
+<!-- 爱心内容 -->
+<div id="mainDiv">
+	<div id="content">
+		<div id="loveHeart">
+			<canvas id="garden"></canvas>
+			<div id="words">
+				<div class="messages">
+					2012年，只是因为在人群中多看了你一眼
+				</div>
+				<div class="loveu">
+					“Hi,你好”
+				</div>
+				<!--  2013-->
+				<div class="messages">
+					2013年，再大的心都装不下我的喜悦
+				</div>
+				<div class="loveu">
+					“愿意做我女朋友就把你的手交给我”
+				</div>
+				<!--  2014-->
+				<div class="messages">
+					2014年，我们的足迹踏上了泰山之巅
+				</div>
+				<div class="loveu">
+					“我要带你游遍全世界”
+				</div>
+				<!--  2015-->
+				<div class="messages">
+					2015，我们相爱的1000个日日夜夜
+				</div>
+				<div class="loveu">
+					有了你，便有了期盼
+				</div>
+				<!--  2016-->
+				<div class="messages messages2016">
+					岁月在变，唯爱不变
+					<div id="elapseClock"></div>
+				</div>
+				<div class="loveu loveu2016">
+					I love you forever
+					<div class="signature">- Mr.yu</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script src="./index.js"></script>
+<script src="./flower.js"></script>	
+<!-- 计时器 -->
+<script type="text/javascript" src="./interval.js"></script>
+<script type="text/javascript">
+	window.onload = function(){
+		var r = "https://raw.githubusercontent.com/bigdots/blog/gh-pages/images/whys."
+		var src = [r+'ogg',r+'mp3',r+'aac']
+		var sound = new Howl({
+		    src: src,
+		    autoplay: true,
+		    loop: true,
+		    volume: 0.5,
+		    onend: function() {
+		    	console.log('Finished!');
+		    }
+		});
+		sound.play();
+	}
+	
+</script>
+
+</body>
+</html>
